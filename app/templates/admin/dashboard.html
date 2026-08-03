@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1>Dashboard administrativo</h1>
+<p>Produtos: {{ product_count }}</p>
+<p>Pedidos: {{ order_count }}</p>
+<p><a href="{{ url_for('admin.pedidos_lista') }}">Pedidos</a></p>
+<p><a href="{{ url_for('admin.produtos_crud') }}">Produtos</a></p>
+{% endblock %}

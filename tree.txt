@@ -1,0 +1,58 @@
+.
+├── app
+│   ├── config.py
+│   ├── extensions.py
+│   ├── __init__.py
+│   ├── models
+│   │   ├── client.py
+│   │   ├── __init__.py
+│   │   ├── order_item.py
+│   │   ├── order.py
+│   │   ├── product.py
+│   │   └── user.py
+│   ├── routes
+│   │   ├── admin.py
+│   │   ├── auth.py
+│   │   ├── __init__.py
+│   │   ├── orders.py
+│   │   └── public.py
+│   ├── services
+│   │   ├── __init__.py
+│   │   ├── order_service.py
+│   │   ├── printer_service.py
+│   │   └── product_service.py
+│   ├── static
+│   │   ├── css
+│   │   │   └── style.css
+│   │   ├── images
+│   │   │   └── placeholder.jpg
+│   │   └── js
+│   │       └── script.js
+│   ├── templates
+│   │   ├── admin
+│   │   │   ├── dashboard.html
+│   │   │   ├── pedidos_lista.html
+│   │   │   └── produtos_crud.html
+│   │   ├── auth
+│   │   │   ├── login.html
+│   │   │   └── registro.html
+│   │   ├── base.html
+│   │   ├── orders
+│   │   │   ├── pedido_balcao.html
+│   │   │   └── pedido_publico.html
+│   │   └── public
+│   │       ├── contato.html
+│   │       ├── index.html
+│   │       └── menu.html
+│   └── utils
+│       ├── csv_importer.py
+│       ├── __init__.py
+│       └── security.py
+├── data
+│   └── cardapiotrabalho.csv
+├── README.md
+├── requirements.txt
+├── run.py
+└── tree.txt
+
+16 directories, 40 files

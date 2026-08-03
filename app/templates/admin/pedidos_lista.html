@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Pedidos{% endblock %}
+{% block content %}
+<h1>Pedidos</h1>
+{% for order in orders %}
+    <article>
+        <strong>#{{ order.id }}</strong>
+        <span>{{ order.status|e }}</span>
+        <span>R$ {{ "%.2f"|format(order.total|float) }}</span>
+    </article>
+{% else %}
+    <p>Nenhum pedido.</p>
+{% endfor %}
+{% endblock %}

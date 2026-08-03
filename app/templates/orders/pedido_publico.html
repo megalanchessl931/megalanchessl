@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Novo pedido{% endblock %}
+{% block content %}
+<h1>Dados do pedido</h1>
+<form method="post">
+    {{ form.hidden_tag() }}
+    {{ form.name.label }} {{ form.name() }}
+    {{ form.phone.label }} {{ form.phone() }}
+    {{ form.address.label }} {{ form.address() }}
+    {{ form.neighborhood.label }} {{ form.neighborhood() }}
+    {{ form.notes.label }} {{ form.notes() }}
+    {{ form.submit() }}
+</form>
+<p>O carrinho será conectado na próxima etapa do projeto.</p>
+{% endblock %}
