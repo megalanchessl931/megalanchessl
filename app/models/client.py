@@ -6,7 +6,7 @@ class Client(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
-    phone = db.Column(db.String(20))
+    phone = db.Column(db.String(20), unique=True, index=True, nullable=False)
     address = db.Column(db.String(200))
     neighborhood = db.Column(db.String(50))
     created_at = db.Column(db.DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), nullable=False)

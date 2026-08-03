@@ -1,9 +1,8 @@
 from flask import Flask
 from dotenv import load_dotenv
 from flask import request
-
+from .extensions import db, login_manager, migrate, csrf, limiter, sess
 from .config import Config
-from .extensions import db, login_manager, migrate, csrf, limiter
 from .models.user import User
 
 def create_app(config_class=Config):
@@ -16,7 +15,8 @@ def create_app(config_class=Config):
     csrf.init_app(app)
     login_manager.init_app(app)
     limiter.init_app(app)
-
+    sess.init_app(app)
+    
     login_manager.login_view = "auth.login"
     login_manager.login_message = "Faça login para acessar esta área."
 
@@ -58,11 +58,13 @@ def create_app(config_class=Config):
     from .routes.orders import orders_bp
     from .routes.admin import admin_bp
     from .routes.auth import auth_bp
+    from .routes.api import api_bp
 
     app.register_blueprint(public_bp)
     app.register_blueprint(orders_bp)
     app.register_blueprint(admin_bp)
     app.register_blueprint(auth_bp)
+    app.register_blueprint(api_bp)
 
     from .utils.csv_importer import register_import_command
     register_import_command(app)

@@ -31,3 +31,10 @@ def produtos_crud():
     admin_required()
     products = Product.query.order_by(Product.order.asc(), Product.name.asc()).all()
     return render_template("admin/produtos_crud.html", products=products)
+
+@admin_bp.route("/pedidos/<int:id>")
+@login_required
+def pedido_detalhe(id):
+    from ..models import Order
+    order = Order.query.get_or_404(id)
+    return render_template("admin/pedido_detalhe.html", order=order)

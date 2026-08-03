@@ -38,15 +38,6 @@ class Config:
     PRINT_DEVICE = os.getenv("PRINT_DEVICE", "")
     MAX_CONTENT_LENGTH = 5 * 1024 * 1024
 
-    # ---- Carrinho (Flask-Session) ----
-    # Sessão do lado do servidor: o carrinho não fica no cookie do navegador,
-    # só um identificador. Guardado em arquivos locais (sem dependência extra
-    # tipo Redis, coerente com o deploy de 1 worker no Render).
-    SESSION_TYPE = os.getenv("SESSION_TYPE", "filesystem")
-    SESSION_FILE_DIR = str(BASE_DIR / "instance" / "flask_session")
-    SESSION_PERMANENT = False
-    SESSION_USE_SIGNER = True  # assina o cookie de id da sessão com a SECRET_KEY
-
 class DevelopmentConfig(Config):
     DEBUG = True
     FORCE_HTTPS = False
