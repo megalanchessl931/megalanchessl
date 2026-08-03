@@ -17,3 +17,24 @@ input, textarea { padding: 9px; }
 .inline-form { display: inline; }
 .flash { padding: 10px; margin-bottom: 10px; }
 .hero { text-align: center; padding: 80px 20px; }
+
+/* ---- Carrinho / montagem de pedido (balcão e público) ---- */
+.pedido-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; align-items: start; }
+.categoria-titulo { margin-top: 20px; text-transform: uppercase; font-size: 0.9rem; color: #555; }
+.produtos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+.produto-card { padding: 10px; background: white; border: 1px solid #ddd; }
+.produto-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+.produto-preco { font-weight: bold; }
+.produto-add { display: flex; gap: 6px; align-items: center; }
+.produto-add .qtd-input { width: 55px; padding: 6px; }
+.carrinho-box { background: white; border: 1px solid #ddd; padding: 16px; position: sticky; top: 16px; }
+.carrinho-lista { list-style: none; margin: 0; padding: 0; }
+.carrinho-item { display: grid; grid-template-columns: 1fr 55px 70px auto; gap: 6px; align-items: center; padding: 6px 0; border-bottom: 1px solid #eee; }
+.carrinho-item-qtd { width: 50px; padding: 4px; }
+.carrinho-total { font-size: 1.1rem; }
+.btn-secundario { background: #777; }
+.busca-cliente { position: relative; margin-bottom: 10px; }
+.resultados-cliente { list-style: none; margin: 0; padding: 0; position: absolute; background: white; border: 1px solid #ccc; width: 100%; max-height: 180px; overflow-y: auto; z-index: 10; }
+.resultado-cliente-item { padding: 8px; cursor: pointer; }
+.resultado-cliente-item:hover { background: #f0f0f0; }
+.erro-campo { color: #b00020; font-size: 0.85rem; display: block; }

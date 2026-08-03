@@ -52,7 +52,7 @@ def _preencher_form_com_cliente_do_carrinho(form, cart):
         form.neighborhood.data = client_data.get("neighborhood")
 
 
-def _finalizar(template_name, endpoint_sucesso, user=None):
+def _finalizar(template_name, endpoint_sucesso, action_endpoint, user=None):
     """
     Lógica compartilhada entre balcão e pedido público: valida o
     formulário, atualiza os dados do cliente no carrinho, tenta criar o
@@ -63,6 +63,7 @@ def _finalizar(template_name, endpoint_sucesso, user=None):
     form = OrderForm()
     cart = cart_service.get_cart()
     _preencher_form_com_cliente_do_carrinho(form, cart)
+    action_url = url_for(action_endpoint)
 
     if form.validate_on_submit():
         cart_service.set_client_data(
@@ -80,14 +81,16 @@ def _finalizar(template_name, endpoint_sucesso, user=None):
         except ValueError as exc:
             flash(str(exc), "error")
             return render_template(
-                template_name, form=form, cart=cart, products=_produtos_ativos()
+                template_name, form=form, cart=cart, products=_produtos_ativos(), action_url=action_url
             )
 
         cart_service.clear_cart()
         flash(f"Pedido #{order.id} registrado com sucesso.", "success")
         return redirect(url_for(endpoint_sucesso))
 
-    return render_template(template_name, form=form, cart=cart, products=_produtos_ativos())
+    return render_template(
+        template_name, form=form, cart=cart, products=_produtos_ativos(), action_url=action_url
+    )
 
 
 # ---------------------------------------------------------------------
@@ -101,7 +104,11 @@ def pedido_balcao():
     cart = cart_service.get_cart()
     _preencher_form_com_cliente_do_carrinho(form, cart)
     return render_template(
-        "orders/pedido_balcao.html", form=form, cart=cart, products=_produtos_ativos()
+        "orders/pedido_balcao.html",
+        form=form,
+        cart=cart,
+        products=_produtos_ativos(),
+        action_url=url_for("orders.pedido_balcao_finalizar"),
     )
 
 
@@ -109,7 +116,12 @@ def pedido_balcao():
 @login_required
 @limiter.limit("10 per minute")
 def pedido_balcao_finalizar():
-    return _finalizar("orders/pedido_balcao.html", "orders.pedido_balcao", user=current_user)
+    return _finalizar(
+        "orders/pedido_balcao.html",
+        "orders.pedido_balcao",
+        "orders.pedido_balcao_finalizar",
+        user=current_user,
+    )
 
 
 # ---------------------------------------------------------------------
@@ -119,4 +131,4 @@ def pedido_balcao_finalizar():
 @orders_bp.route("/novo", methods=["GET", "POST"])
 @limiter.limit("10 per minute")
 def pedido_publico():
-    return _finalizar("orders/pedido_publico.html", "public.menu", user=None)
+    return _finalizar("orders/pedido_publico.html", "public.menu", "orders.pedido_publico", user=None)

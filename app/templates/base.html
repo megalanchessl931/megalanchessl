@@ -16,7 +16,7 @@
         {% if current_user.is_authenticated and current_user.is_admin %}
             <a href="{{ url_for('admin.dashboard') }}">Admin</a>
             <form method="post" action="{{ url_for('auth.logout') }}" class="inline-form">
-                {{ csrf_token() }}
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <button type="submit">Sair</button>
             </form>
         {% else %}
