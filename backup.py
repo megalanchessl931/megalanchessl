@@ -34,7 +34,7 @@ DIRECTORIES_TO_BACKUP = [
 
 # Arquivos importantes da raiz
 FILES_TO_BACKUP = [
-    ".env",
+#    ".env",
     ".env.example",
     "requirements.txt",
     "run.py",

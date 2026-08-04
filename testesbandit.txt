@@ -1,0 +1,347 @@
+MEDIUM: filename:21: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:336: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:355: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:189: B102 - Use of exec detected.
+MEDIUM: filename:219: B102 - Use of exec detected.
+MEDIUM: filename:32: B702 - Mako templates allow HTML/JS rendering by default and are inherently open to XSS attacks. Ensure variables in all templates are properly sanitized via the 'n', 'h' or 'x' flags (depending on context). For example, to HTML escape the variable 'data' do ${ data |h }.
+MEDIUM: filename:1225: B604 - Function call with shell=True parameter identified, possible security issue.
+MEDIUM: filename:507: B104 - Possible binding to all interfaces.
+MEDIUM: filename:264: B610 - Use of extra potential SQL attack vector.
+MEDIUM: filename:130: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:95: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:220: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:329: B303 - Use of insecure MD2, MD4, MD5, or SHA1 hash function.
+MEDIUM: filename:329: B303 - Use of insecure MD2, MD4, MD5, or SHA1 hash function.
+HIGH:   filename:150: B324 - Use of weak SHA1 hash for security. Consider usedforsecurity=False
+MEDIUM: filename:15: B303 - Use of insecure MD2, MD4, MD5, or SHA1 hash function.
+MEDIUM: filename:21: B303 - Use of insecure MD2, MD4, MD5, or SHA1 hash function.
+HIGH:   filename:22: B613 - A Python source file contains bidirectional control characters ('\u202e').
+HIGH:   filename:24: B324 - Use of weak MD5 hash for security. Consider usedforsecurity=False
+MEDIUM: filename:29: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:53: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:76: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:53: B102 - Use of exec detected.
+MEDIUM: filename:80: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:26: B102 - Use of exec detected.
+MEDIUM: filename:133: B303 - Use of insecure MD2, MD4, MD5, or SHA1 hash function.
+MEDIUM: filename:134: B303 - Use of insecure MD2, MD4, MD5, or SHA1 hash function.
+MEDIUM: filename:135: B303 - Use of insecure MD2, MD4, MD5, or SHA1 hash function.
+MEDIUM: filename:144: B303 - Use of insecure MD2, MD4, MD5, or SHA1 hash function.
+MEDIUM: filename:153: B303 - Use of insecure MD2, MD4, MD5, or SHA1 hash function.
+MEDIUM: filename:1000: B303 - Use of insecure MD2, MD4, MD5, or SHA1 hash function.
+HIGH:   filename:72: B324 - Use of weak SHA1 hash for security. Consider usedforsecurity=False
+HIGH:   filename:37: B411 - Using xmlrpc to parse untrusted XML data is known to be vulnerable to XML attacks. Use defusedxml.xmlrpc.monkey_patch() function to monkey-patch xmlrpclib and mitigate XML vulnerabilities.
+MEDIUM: filename:30: B319 - Using xml.dom.pulldom.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.dom.pulldom.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called
+MEDIUM: filename:41: B319 - Using xml.dom.pulldom.parseString to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.dom.pulldom.parseString with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called
+HIGH:   filename:18: B411 - Using ExpatParser to parse untrusted XML data is known to be vulnerable to XML attacks. Use defusedxml.xmlrpc.monkey_patch() function to monkey-patch xmlrpclib and mitigate XML vulnerabilities.
+HIGH:   filename:19: B411 - Using client to parse untrusted XML data is known to be vulnerable to XML attacks. Use defusedxml.xmlrpc.monkey_patch() function to monkey-patch xmlrpclib and mitigate XML vulnerabilities.
+HIGH:   filename:20: B411 - Using server to parse untrusted XML data is known to be vulnerable to XML attacks. Use defusedxml.xmlrpc.monkey_patch() function to monkey-patch xmlrpclib and mitigate XML vulnerabilities.
+HIGH:   filename:21: B411 - Using gzip_decode to parse untrusted XML data is known to be vulnerable to XML attacks. Use defusedxml.xmlrpc.monkey_patch() function to monkey-patch xmlrpclib and mitigate XML vulnerabilities.
+HIGH:   filename:22: B411 - Using GzipDecodedResponse to parse untrusted XML data is known to be vulnerable to XML attacks. Use defusedxml.xmlrpc.monkey_patch() function to monkey-patch xmlrpclib and mitigate XML vulnerabilities.
+HIGH:   filename:25: B411 - Using ExpatParser to parse untrusted XML data is known to be vulnerable to XML attacks. Use defusedxml.xmlrpc.monkey_patch() function to monkey-patch xmlrpclib and mitigate XML vulnerabilities.
+HIGH:   filename:26: B411 - Using xmlrpclib to parse untrusted XML data is known to be vulnerable to XML attacks. Use defusedxml.xmlrpc.monkey_patch() function to monkey-patch xmlrpclib and mitigate XML vulnerabilities.
+HIGH:   filename:29: B411 - Using gzip_decode to parse untrusted XML data is known to be vulnerable to XML attacks. Use defusedxml.xmlrpc.monkey_patch() function to monkey-patch xmlrpclib and mitigate XML vulnerabilities.
+HIGH:   filename:30: B411 - Using GzipDecodedResponse to parse untrusted XML data is known to be vulnerable to XML attacks. Use defusedxml.xmlrpc.monkey_patch() function to monkey-patch xmlrpclib and mitigate XML vulnerabilities.
+MEDIUM: filename:72: B104 - Possible binding to all interfaces.
+HIGH:   filename:234: B324 - Use of weak SHA1 hash for security. Consider usedforsecurity=False
+HIGH:   filename:794: B324 - Use of weak SHA1 hash for security. Consider usedforsecurity=False
+HIGH:   filename:796: B324 - Use of weak SHA1 hash for security. Consider usedforsecurity=False
+MEDIUM: filename:16: B303 - Use of insecure MD2, MD4, MD5, or SHA1 hash function.
+MEDIUM: filename:86: B303 - Use of insecure MD2, MD4, MD5, or SHA1 hash function.
+MEDIUM: filename:95: B303 - Use of insecure MD2, MD4, MD5, or SHA1 hash function.
+MEDIUM: filename:104: B303 - Use of insecure MD2, MD4, MD5, or SHA1 hash function.
+HIGH:   filename:37: B324 - Use of weak SHA1 hash for security. Consider usedforsecurity=False
+MEDIUM: filename:175: B104 - Possible binding to all interfaces.
+MEDIUM: filename:106: B104 - Possible binding to all interfaces.
+MEDIUM: filename:176: B104 - Possible binding to all interfaces.
+MEDIUM: filename:41: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:1031: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:209: B102 - Use of exec detected.
+MEDIUM: filename:188: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+HIGH:   filename:281: B324 - Use of weak SHA1 hash for security. Consider usedforsecurity=False
+HIGH:   filename:55: B324 - Use of weak SHA1 hash for security. Consider usedforsecurity=False
+HIGH:   filename:60: B324 - Use of weak SHA1 hash for security. Consider usedforsecurity=False
+MEDIUM: filename:136: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:119: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:71: B310 - Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+MEDIUM: filename:18: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:41: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+HIGH:   filename:36: B605 - Starting a process with a shell, possible injection detected, security issue.
+MEDIUM: filename:247: B104 - Possible binding to all interfaces.
+MEDIUM: filename:84: B610 - Use of extra potential SQL attack vector.
+MEDIUM: filename:86: B610 - Use of extra potential SQL attack vector.
+MEDIUM: filename:88: B610 - Use of extra potential SQL attack vector.
+MEDIUM: filename:90: B610 - Use of extra potential SQL attack vector.
+MEDIUM: filename:92: B610 - Use of extra potential SQL attack vector.
+HIGH:   filename:309: B324 - Use of weak SHA1 hash for security. Consider usedforsecurity=False
+HIGH:   filename:45: B324 - Use of weak SHA1 hash for security. Consider usedforsecurity=False
+MEDIUM: filename:73: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:79: B302 - Deserialization with the marshal module is possibly dangerous.
+HIGH:   filename:156: B324 - Use of weak SHA1 hash for security. Consider usedforsecurity=False
+HIGH:   filename:165: B324 - Use of weak SHA1 hash for security. Consider usedforsecurity=False
+MEDIUM: filename:145: B102 - Use of exec detected.
+MEDIUM: filename:1228: B102 - Use of exec detected.
+MEDIUM: filename:1544: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:176: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:197: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:213: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:238: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:316: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:820: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:851: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:852: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:1056: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:1377: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+HIGH:   filename:661: B324 - Use of weak SHA1 hash for security. Consider usedforsecurity=False
+MEDIUM: filename:619: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:1091: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:1112: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:375: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:389: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:776: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:787: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:403: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:668: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+LOW: filename:19: B403 - Consider possible security implications associated with HIGHEST_PROTOCOL module.
+MEDIUM: filename:40: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:174: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:176: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:166: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:168: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:175: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+LOW: filename:31: B403 - Consider possible security implications associated with HIGHEST_PROTOCOL module.
+MEDIUM: filename:78: B108 - Probable insecure usage of temp file/directory.
+HIGH:   filename:228: B324 - Use of weak MD5 hash for security. Consider usedforsecurity=False
+MEDIUM: filename:350: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:370: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:383: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:937: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:993: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:164: B102 - Use of exec detected.
+MEDIUM: filename:334: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:336: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:368: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:598: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:604: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:609: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:611: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:704: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:1219: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:1340: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:1374: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:1387: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:1400: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:33: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:322: B303 - Use of insecure MD2, MD4, MD5, or SHA1 hash function.
+MEDIUM: filename:322: B303 - Use of insecure MD2, MD4, MD5, or SHA1 hash function.
+HIGH:   filename:1: B413 - The pyCrypto library and its module ChaCha20_Poly1305 are no longer actively maintained and have been deprecated. Consider using pyca/cryptography library.
+MEDIUM: filename:64: B702 - Mako templates allow HTML/JS rendering by default and are inherently open to XSS attacks. Ensure variables in all templates are properly sanitized via the 'n', 'h' or 'x' flags (depending on context). For example, to HTML escape the variable 'data' do ${ data |h }.
+MEDIUM: filename:78: B702 - Mako templates allow HTML/JS rendering by default and are inherently open to XSS attacks. Ensure variables in all templates are properly sanitized via the 'n', 'h' or 'x' flags (depending on context). For example, to HTML escape the variable 'data' do ${ data |h }.
+MEDIUM: filename:117: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:118: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:131: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:132: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:441: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:611: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:612: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:725: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:250: B702 - Mako templates allow HTML/JS rendering by default and are inherently open to XSS attacks. Ensure variables in all templates are properly sanitized via the 'n', 'h' or 'x' flags (depending on context). For example, to HTML escape the variable 'data' do ${ data |h }.
+MEDIUM: filename:310: B702 - Mako templates allow HTML/JS rendering by default and are inherently open to XSS attacks. Ensure variables in all templates are properly sanitized via the 'n', 'h' or 'x' flags (depending on context). For example, to HTML escape the variable 'data' do ${ data |h }.
+MEDIUM: filename:41: B702 - Mako templates allow HTML/JS rendering by default and are inherently open to XSS attacks. Ensure variables in all templates are properly sanitized via the 'n', 'h' or 'x' flags (depending on context). For example, to HTML escape the variable 'data' do ${ data |h }.
+MEDIUM: filename:312: B702 - Mako templates allow HTML/JS rendering by default and are inherently open to XSS attacks. Ensure variables in all templates are properly sanitized via the 'n', 'h' or 'x' flags (depending on context). For example, to HTML escape the variable 'data' do ${ data |h }.
+MEDIUM: filename:351: B702 - Mako templates allow HTML/JS rendering by default and are inherently open to XSS attacks. Ensure variables in all templates are properly sanitized via the 'n', 'h' or 'x' flags (depending on context). For example, to HTML escape the variable 'data' do ${ data |h }.
+MEDIUM: filename:679: B102 - Use of exec detected.
+MEDIUM: filename:13: B702 - Mako templates allow HTML/JS rendering by default and are inherently open to XSS attacks. Ensure variables in all templates are properly sanitized via the 'n', 'h' or 'x' flags (depending on context). For example, to HTML escape the variable 'data' do ${ data |h }.
+MEDIUM: filename:55: B702 - Mako templates allow HTML/JS rendering by default and are inherently open to XSS attacks. Ensure variables in all templates are properly sanitized via the 'n', 'h' or 'x' flags (depending on context). For example, to HTML escape the variable 'data' do ${ data |h }.
+MEDIUM: filename:182: B506 - Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().
+MEDIUM: filename:236: B314 - Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called
+MEDIUM: filename:350: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:1583: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:381: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:40: B314 - Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called
+MEDIUM: filename:136: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:204: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:285: B314 - Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called
+MEDIUM: filename:325: B314 - Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called
+HIGH:   filename:2533: B324 - Use of weak MD5 hash for security. Consider usedforsecurity=False
+MEDIUM: filename:2873: B314 - Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called
+MEDIUM: filename:2901: B314 - Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called
+MEDIUM: filename:162: B615 - Unsafe Hugging Face Hub download without revision pinning in load_dataset()
+MEDIUM: filename:165: B615 - Unsafe Hugging Face Hub download without revision pinning in load_dataset()
+MEDIUM: filename:172: B615 - Unsafe Hugging Face Hub download without revision pinning in load_dataset()
+MEDIUM: filename:227: B615 - Unsafe Hugging Face Hub download without revision pinning in load_dataset()
+MEDIUM: filename:292: B615 - Unsafe Hugging Face Hub download without revision pinning in load_dataset()
+MEDIUM: filename:304: B615 - Unsafe Hugging Face Hub download without revision pinning in load_dataset()
+MEDIUM: filename:311: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:1036: B314 - Using xml.etree.ElementTree.fromstring to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.fromstring with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called
+MEDIUM: filename:151: B113 - Call to requests without timeout
+MEDIUM: filename:162: B113 - Call to requests without timeout
+MEDIUM: filename:655: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:658: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:435: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:615: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:635: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:37: B103 - Chmod setting a permissive mask 0o755 on file (target).
+MEDIUM: filename:61: B103 - Chmod setting a permissive mask 0o755 on file (nested).
+MEDIUM: filename:23: B314 - Using xml.etree.ElementTree.fromstring to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.fromstring with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called
+HIGH:   filename:130: B324 - Use of weak MD5 hash for security. Consider usedforsecurity=False
+HIGH:   filename:163: B324 - Use of weak MD5 hash for security. Consider usedforsecurity=False
+HIGH:   filename:35: B324 - Use of weak MD5 hash for security. Consider usedforsecurity=False
+HIGH:   filename:98: B324 - Use of weak MD5 hash for security. Consider usedforsecurity=False
+HIGH:   filename:253: B324 - Use of weak MD5 hash for security. Consider usedforsecurity=False
+MEDIUM: filename:116: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:243: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:450: B104 - Possible binding to all interfaces.
+MEDIUM: filename:38: B103 - Chmod setting a permissive mask 0o755 on file (target).
+MEDIUM: filename:477: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:214: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:1611: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:1774: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:1797: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:538: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:130: B604 - Function call with shell=True parameter identified, possible security issue.
+HIGH:   filename:248: B602 - subprocess call with shell=True identified, security issue.
+HIGH:   filename:7: B411 - Using xmlrpc.client to parse untrusted XML data is known to be vulnerable to XML attacks. Use defusedxml.xmlrpc.monkey_patch() function to monkey-patch xmlrpclib and mitigate XML vulnerabilities.
+HIGH:   filename:5: B411 - Using xmlrpc.client to parse untrusted XML data is known to be vulnerable to XML attacks. Use defusedxml.xmlrpc.monkey_patch() function to monkey-patch xmlrpclib and mitigate XML vulnerabilities.
+HIGH:   filename:13: B411 - Using _HostType to parse untrusted XML data is known to be vulnerable to XML attacks. Use defusedxml.xmlrpc.monkey_patch() function to monkey-patch xmlrpclib and mitigate XML vulnerabilities.
+MEDIUM: filename:298: B608 - Possible SQL injection vector through string-based query construction.
+HIGH:   filename:254: B202 - tarfile.extractall used without any validation. Please check and discard dangerous members.
+HIGH:   filename:41: B411 - Using xmlrpclib to parse untrusted XML data is known to be vulnerable to XML attacks. Use defusedxml.xmlrpc.monkey_patch() function to monkey-patch xmlrpclib and mitigate XML vulnerabilities.
+HIGH:   filename:77: B411 - Using xmlrpc.client to parse untrusted XML data is known to be vulnerable to XML attacks. Use defusedxml.xmlrpc.monkey_patch() function to monkey-patch xmlrpclib and mitigate XML vulnerabilities.
+HIGH:   filename:1307: B202 - tarfile.extractall used without any validation. Please check and discard dangerous members.
+MEDIUM: filename:1714: B102 - Use of exec detected.
+MEDIUM: filename:1725: B102 - Use of exec detected.
+MEDIUM: filename:184: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:103: B102 - Use of exec detected.
+MEDIUM: filename:154: B102 - Use of exec detected.
+MEDIUM: filename:471: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:186: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:188: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:907: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:1086: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:1111: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:974: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:975: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:1007: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:1008: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:54: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:42: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:195: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:103: B102 - Use of exec detected.
+MEDIUM: filename:154: B102 - Use of exec detected.
+MEDIUM: filename:225: B310 - Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+MEDIUM: filename:233: B310 - Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+MEDIUM: filename:1297: B310 - Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+MEDIUM: filename:1303: B310 - Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+MEDIUM: filename:3299: B310 - Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+HIGH:   filename:3304: B202 - tarfile.extractall used without any validation. Please check and discard dangerous members.
+MEDIUM: filename:642: B310 - Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+MEDIUM: filename:647: B310 - Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+MEDIUM: filename:3775: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:475: B302 - Deserialization with the marshal module is possibly dangerous.
+MEDIUM: filename:151: B108 - Probable insecure usage of temp file/directory.
+HIGH:   filename:154: B701 - By default, jinja2 sets autoescape to False. Consider using autoescape=True or use the select_autoescape function to mitigate XSS vulnerabilities.
+HIGH:   filename:204: B701 - By default, jinja2 sets autoescape to False. Consider using autoescape=True or use the select_autoescape function to mitigate XSS vulnerabilities.
+HIGH:   filename:262: B324 - Use of weak SHA1 hash for security. Consider usedforsecurity=False
+HIGH:   filename:1655: B701 - By default, jinja2 sets autoescape to False. Consider using autoescape=True or use the select_autoescape function to mitigate XSS vulnerabilities.
+HIGH:   filename:357: B605 - Starting a process with a shell, possible injection detected, security issue.
+MEDIUM: filename:1114: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:268: B102 - Use of exec detected.
+MEDIUM: filename:115: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:120: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:122: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:145: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:182: B108 - Probable insecure usage of temp file/directory.
+HIGH:   filename:32: B103 - Chmod setting a permissive mask 0o777 on file (exe).
+HIGH:   filename:44: B103 - Chmod setting a permissive mask 0o777 on file (exe).
+MEDIUM: filename:78: B310 - Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+HIGH:   filename:80: B202 - tarfile.extractall used without any validation. Please check and discard dangerous members.
+MEDIUM: filename:563: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:182: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:317: B102 - Use of exec detected.
+MEDIUM: filename:384: B302 - Deserialization with the marshal module is possibly dangerous.
+MEDIUM: filename:158: B310 - Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+MEDIUM: filename:133: B302 - Deserialization with the marshal module is possibly dangerous.
+MEDIUM: filename:32: B102 - Use of exec detected.
+MEDIUM: filename:53: B310 - Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+HIGH:   filename:77: B602 - subprocess call with shell=True identified, security issue.
+MEDIUM: filename:174: B310 - Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+MEDIUM: filename:187: B310 - Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+HIGH:   filename:190: B324 - Use of weak MD5 hash for security. Consider usedforsecurity=False
+MEDIUM: filename:447: B102 - Use of exec detected.
+MEDIUM: filename:15: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:33: B310 - Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+HIGH:   filename:626: B103 - Chmod setting a permissive mask 0o777 on file (runsh).
+MEDIUM: filename:212: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:740: B102 - Use of exec detected.
+MEDIUM: filename:3210: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:3223: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:3431: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:1912: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:1914: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:2329: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:1570: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:1688: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:2287: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:2355: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:2943: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:3009: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:3018: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:149: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:152: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:155: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:159: B301 - Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+MEDIUM: filename:533: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:743: B102 - Use of exec detected.
+MEDIUM: filename:716: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:6226: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:1044: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:1263: B102 - Use of exec detected.
+MEDIUM: filename:4984: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:645: B102 - Use of exec detected.
+MEDIUM: filename:110: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:148: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:512: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:844: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:863: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:1067: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:1091: B608 - Possible SQL injection vector through string-based query construction.
+MEDIUM: filename:185: B608 - Possible SQL injection vector through string-based query construction.
+HIGH:   filename:221: B324 - Use of weak MD5 hash for security. Consider usedforsecurity=False
+MEDIUM: filename:311: B102 - Use of exec detected.
+MEDIUM: filename:949: B102 - Use of exec detected.
+MEDIUM: filename:1947: B102 - Use of exec detected.
+MEDIUM: filename:274: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:276: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:153: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:28: B108 - Probable insecure usage of temp file/directory.
+MEDIUM: filename:113: B604 - Function call with shell=True parameter identified, possible security issue.
+MEDIUM: filename:141: B604 - Function call with shell=True parameter identified, possible security issue.
+MEDIUM: filename:152: B604 - Function call with shell=True parameter identified, possible security issue.
+MEDIUM: filename:194: B604 - Function call with shell=True parameter identified, possible security issue.
+MEDIUM: filename:215: B604 - Function call with shell=True parameter identified, possible security issue.
+MEDIUM: filename:220: B604 - Function call with shell=True parameter identified, possible security issue.
+MEDIUM: filename:225: B604 - Function call with shell=True parameter identified, possible security issue.
+MEDIUM: filename:230: B604 - Function call with shell=True parameter identified, possible security issue.
+MEDIUM: filename:34: B604 - Function call with shell=True parameter identified, possible security issue.
+MEDIUM: filename:57: B604 - Function call with shell=True parameter identified, possible security issue.
+MEDIUM: filename:4172: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:4254: B307 - Use of possibly insecure function - consider using safer ast.literal_eval.
+MEDIUM: filename:101: B102 - Use of exec detected.
+MEDIUM: filename:133: B102 - Use of exec detected.
+HIGH:   filename:45: B324 - Use of weak SHA1 hash for security. Consider usedforsecurity=False
+HIGH:   filename:196: B324 - Use of weak SHA1 hash for security. Consider usedforsecurity=False
+MEDIUM: filename:177: B102 - Use of exec detected.
+HIGH:   filename:1019: B324 - Use of weak SHA1 hash for security. Consider usedforsecurity=False
+MEDIUM: filename:736: B102 - Use of exec detected.
+MEDIUM: filename:849: B104 - Possible binding to all interfaces.
+MEDIUM: filename:852: B104 - Possible binding to all interfaces.
+MEDIUM: filename:203: B102 - Use of exec detected.
+HIGH:   filename:47: B324 - Use of weak SHA1 hash for security. Consider usedforsecurity=False
+MEDIUM: filename:445: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:113: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:150: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:179: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:328: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:377: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+MEDIUM: filename:388: B704 - Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.

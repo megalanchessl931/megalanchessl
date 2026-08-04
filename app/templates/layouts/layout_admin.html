@@ -20,7 +20,7 @@
     <link
         rel="stylesheet"
         href="{{ url_for('static', filename='css/style.css') }}">
-    
+
     <link
         rel="stylesheet"
         href="{{ url_for('static', filename='css/admin.css') }}">
@@ -56,7 +56,7 @@
 
         </div>
 
-        <div>
+        <div class="admin-user">
 
             {% if current_user.is_authenticated %}
 
@@ -64,19 +64,31 @@
 
                 |
 
-                <a href="{{ url_for('auth.logout') }}">
+                <form
+                    action="{{ url_for('auth.logout') }}"
+                    method="POST"
+                    style="display:inline;">
 
-                    Sair
+                    <input
+                        type="hidden"
+                        name="csrf_token"
+                        value="{{ csrf_token() }}">
 
-                </a>
+                    <button
+                        type="submit"
+                        class="logout-link">
+
+                        Sair
+
+                    </button>
+
+                </form>
 
             {% endif %}
 
         </div>
 
     </header>
-
-
 
     <!-- ===================================================== -->
     <!-- ÁREA PRINCIPAL -->
@@ -123,13 +135,13 @@
                     </li>
 
                     <li>
-						
-						<a href="{{ url_for('admin.usuarios_lista') }}">
-							
-							Usuários
-							
-						</a>
-                        
+
+                        <a href="{{ url_for('admin.usuarios_lista') }}">
+
+                            Usuários
+
+                        </a>
+
                     </li>
 
                     <li>
@@ -188,15 +200,11 @@
 
         </aside>
 
-
-
         <!-- CONTEÚDO -->
 
         <main class="admin-content">
 
-            {% with messages =
-                get_flashed_messages(with_categories=true)
-            %}
+            {% with messages = get_flashed_messages(with_categories=true) %}
 
                 {% if messages %}
 

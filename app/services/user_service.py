@@ -184,6 +184,22 @@ class UserService:
         Desativa um usuário.
         """
 
+        if user.is_admin:
+
+            admins_ativos = (
+                User.query
+                .filter_by(
+                    is_admin=True,
+                    is_active=True
+                )
+                .count()
+            )
+
+            if admins_ativos <= 1:
+                raise ValueError(
+                    "O último administrador ativo não pode ser desativado."
+                )
+
         user.is_active = False
 
         db.session.commit()

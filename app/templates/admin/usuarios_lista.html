@@ -44,7 +44,7 @@ Usuários
 
                 <th width="170">Criado em</th>
 
-                <th width="320">Ações</th>
+                <th width="360">Ações</th>
 
             </tr>
 
@@ -108,47 +108,51 @@ Usuários
 
                 </td>
 
-                <td>
+				<td>
 
-                    <a
-                        href="{{ url_for('admin.usuario_editar', user_id=usuario.id) }}"
-                        class="btn btn-secondary">
+					<div class="table-actions">
 
-                        Editar
+						<a
+							href="{{ url_for('admin.usuario_editar', user_id=usuario.id) }}"
+							class="btn btn-secondary">
 
-                    </a>
+							Editar
 
-                    <a
-                        href="{{ url_for('admin.usuario_senha', user_id=usuario.id) }}"
-                        class="btn btn-secondary">
+						</a>
 
-                        Senha
+						<a
+							href="{{ url_for('admin.usuario_senha', user_id=usuario.id) }}"
+							class="btn btn-secondary">
 
-                    </a>
+							Senha
 
-                    {% if usuario.is_active %}
+						</a>
 
-                        <a
-                            href="#"
-                            class="btn btn-danger">
+						{% if usuario.is_active %}
 
-                            Desativar
+							<a
+								href="{{ url_for('admin.usuario_desativar', user_id=usuario.id) }}"
+								class="btn btn-danger">
 
-                        </a>
+								Desativar
 
-                    {% else %}
+							</a>
 
-                        <a
-                            href="#"
-                            class="btn btn-success">
+						{% else %}
 
-                            Ativar
+							<a
+								href="{{ url_for('admin.usuario_ativar', user_id=usuario.id) }}"
+								class="btn btn-success">
 
-                        </a>
+								Ativar
 
-                    {% endif %}
+							</a>
 
-                </td>
+						{% endif %}
+
+					</div>
+
+				</td>
 
             </tr>
 

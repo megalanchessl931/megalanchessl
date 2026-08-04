@@ -577,3 +577,36 @@ textarea:focus{
 }
 
 
+/* ==========================================================
+   LOGOUT
+========================================================== */
+
+.logout-link{
+
+    background:none;
+
+    border:none;
+
+    color:#ffffff;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    font-size:inherit;
+
+    font-family:inherit;
+
+    padding:0;
+
+    margin:0;
+
+}
+
+.logout-link:hover{
+
+    color:#F8D7DA;
+
+    text-decoration:underline;
+
+}

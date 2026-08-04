@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "layouts/layout_admin.html" %}
 
 {% block title %}
 
@@ -233,7 +233,7 @@ Pedido #{{ order.id }}
 
             >
 
-                {{ csrf_token() }}
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
                 <select
                     name="status"
@@ -291,19 +291,7 @@ Pedido #{{ order.id }}
     <!-- AÇÕES -->
     <!-- ==================================== -->
 
-    <div class="text-end">
-
-        <a
-
-            href="{{ url_for('admin.pedidos_lista') }}"
-
-            class="btn btn-secondary"
-
-        >
-
-            Voltar
-
-        </a>
+	<div class="text-end">
 
         <form
 
@@ -315,7 +303,7 @@ Pedido #{{ order.id }}
 
         >
 
-            {{ csrf_token() }}
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
             <button
 
@@ -328,6 +316,12 @@ Pedido #{{ order.id }}
             </button>
 
         </form>
+
+        <br><br>
+
+        <a href="{{ url_for('admin.pedidos_lista') }}" class="btn btn-secondary">
+            Voltar
+        </a>
 
     </div>
 
