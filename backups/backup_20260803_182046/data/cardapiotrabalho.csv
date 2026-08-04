@@ -1,0 +1,39 @@
+produto,preco,descricao,foto,tipo,tipoproducao
+TORRADA COM OVO,"R$ 18,00","Maionese, tomate, alface, presunto, queijo, ovo, no pão de xis",fundo.jpg,lanche,xis
+XIS BURGUER,"R$ 21,00","Maionese, tomate, alface, bife de carne moída, presunto, queijo, ovo",fundo.jpg,lanche,xis
+XIS SALADA,"R$ 25,00","Maionese, milho, ervilha, tomate, alface, bife de carne moída, queijo, ovo",fundo.jpg,lanche,xis
+XIS FRANGO,"R$ 28,00","Maionese, milho, ervilha, tomate, alface, frango desfiado, queijo, ovo",fundo.jpg,lanche,xis
+XIS CALABRESA,"R$ 29,00","Maionese, milho, ervilha, tomate, alface, calabresa, queijo, ovo",fundo.jpg,lanche,xis
+XIS SALADA DUPLO,"R$ 31,00","Maionese, milho, ervilha, tomate, alface, 2 bifes de carne moída, queijo, ovo",fundo.jpg,lanche,xis
+XIS BACON,"R$ 32,00","Maionese, milho, ervilha, tomate, alface, bife, bacon, queijo, ovo",fundo.jpg,lanche,xis
+XIS CORAÇÃO,"R$ 32,00","Maionese, milho, ervilha, tomate, alface, coração, queijo, ovo",fundo.jpg,lanche,xis
+XIS FRANGO COM BACON,"R$ 36,00","Maionese, milho, ervilha, tomate, alface, frango, bacon, queijo, ovo",fundo.jpg,lanche,xis
+XIS A MODA DA CASA,"R$ 32,00","Maionese, tomate, alface, contra filé picado, queijo, ovo",fundo.jpg,lanche,xis
+XIS TUDO,"R$ 37,00","Maionese, milho, ervilha, tomate, alface, coração, calabresa, bacon, frango, queijo, ovo",fundo.jpg,lanche,xis
+XIS ENTREVERO,"R$ 33,00","Maionese, milho, ervilha, tomate, alface, carne bovina, suina, coração, frango, calabresa, queijo, ovo",xentrevero.jpg,lanche,xis
+XIS COSTELA MOÍDA,"R$ 39,00","Maionese, milho, ervilha, tomate, alface, bife de 200g de costela moída, queijo, ovo",xcostela.jpg,lanche,xis
+DOG DUPLO,"R$ 18,00","Maionese, milho, ervilha, 2 salsichas, molho, batata palha.",dog2.jpg,lanche,dog
+DOG FRANGO,"R$ 19,00","Maionese, milho, ervilha, frango desfiado, molho, queijo, batata palha.",fundo.jpg,lanche,dog
+DOG CALABRESA,"R$ 19,00","Maionese, milho, ervilha, calabresa, molho, queijo, batata palha.",fundo.jpg,lanche,dog
+DOG BACON,"R$ 26,00","Maionese, milho, ervilha, bacon, molho, queijo, batata palha.",fundo.jpg,lanche,dog
+DOG CORAÇÃO,"R$ 26,00","Maionese, milho, ervilha, coraçãoo, molho, queijo, batata palha.",fundo.jpg,lanche,dog
+DOG CHOCOLATE,"R$ 17,00","Leite condensado, bombom Ouro Branco ou bombom Sonho de Valsa",fundo.jpg,lanche,dog
+PORÇÃO DE VIOLINHA,"R$ 45,00",Violinha (peixe) 500 gramas,violinha.jpg,lanche,porcao
+VIOLINHA COM FRITAS,"R$ 73,00",Violinha (peixe) 500 gramas  e Batata Frita (500g),fundo.jpg,lanche,porcao
+BATATA FRITA PEQUENA,"R$ 22,00",Batata Frita 350 gramas,fundo.jpg,lanche,porcao
+BATATA FRITA MOÍDIA,"R$ 28,00",Batata Frita 550 gramas,fundo.jpg,lanche,porcao
+BATATA FRITA GRANDE,"R$ 34,00",Batata Frita 700 gramas,fundo.jpg,lanche,porcao
+BATATÃO COM ENTREVERO (serve 1 pessoa),"R$ 45,00",Batata Frita (500g) e Entrevero (350g). Chedar e Catupiry,fundo.jpg,lanche,porcao
+BATATÃO COM ENTREVERO (serve 2 pessoas),"R$ 80,00",Batata Frita (1 Kg) e Entrevero (720 g). Chedar e Catupiry,fundo.jpg,lanche,porcao
+REFRI 200 ml,"R$ 3,00",Pepsi e Guaraná,refri.jpg,bebida,bebida
+COMBO 1,"R$ 64,99",3 Dog Duplo e Pepsii 2 litros,logotexto.jpg,bebida,combo
+REFRI FRUKI 2000 ml,"R$ 14,00",Refregerante Fruki 2 litros,fruki2.jpeg,bebida,bebida
+COMBO 2,"R$ 61,99",2 Xis Salada e 1 refri Pepsi 2 litros,logotexto.jpg,bebida,combo
+REFRI FRUKI 200 ml,"R$ 3,00",Guaraná,frukipqn.jpeg,bebida,bebida
+COMBO 3,"R$ 44,99",2 Dog Duplo e 1 refri Fruki 2 litros,logotexto.jpg,bebida,combo
+REFRI LATA COCA 350 ml,"R$ 6,00",Refri lata Coca 350 ml,fundo.jpg,bebida,bebida
+COMBO 4,"R$ 67,99",2 Xis Calabresa  e 1 refri Fruki 2 litros,logotexto.jpg,bebida,combo
+REFRI LATA FRUKI 350 ml,"R$ 6,00",Refri Fruki lata 350 ml,fundo.jpg,bebida,bebida
+COMBO 5,"R$ 29,99",1 Xis Salada  e 1 refri Fruki lata,logotexto.jpg,bebida,combo
+REFRI 600 ml,"R$ 8,00",Refri 600 ml. Coca ou Fruki,fundo.jpg,bebida,bebida
+COMBO 6,"R$ 103,99",3 Xis Moda da Casa e 1 refri Fruki 2 litros,logotexto.jpg,bebida,combo

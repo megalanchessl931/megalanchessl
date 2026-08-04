@@ -48,6 +48,8 @@
 │   │   │   ├── xentrevero.jpg
 │   │   │   └── xtudo.jpg
 │   │   └── js
+│   │       ├── cart_basico.js
+│   │       ├── cart.js
 │   │       └── script.js
 │   ├── templates
 │   │   ├── admin
@@ -61,7 +63,9 @@
 │   │   ├── base.html
 │   │   ├── orders
 │   │   │   ├── pedido_balcao.html
-│   │   │   └── pedido_publico.html
+│   │   │   ├── pedido_publico.html
+│   │   │   └── _pedido_widget.html
+│   │   ├── _pedido_widget.html
 │   │   └── public
 │   │       ├── contato.html
 │   │       ├── index.html
@@ -70,11 +74,13 @@
 │       ├── csv_importer.py
 │       ├── __init__.py
 │       └── security.py
+├── cookies.txt
 ├── data
 │   └── cardapiotrabalho.csv
 ├── .env
 ├── .env.example
 ├── .gitignore
+├── megalanchessl1.zip
 ├── megalanchessl.zip
 ├── migrations
 │   ├── alembic.ini
@@ -82,7 +88,8 @@
 │   ├── README
 │   ├── script.py.mako
 │   └── versions
-│       └── b28a92cbe41b_initial_migration.py
+│       ├── b28a92cbe41b_initial_migration.py
+│       └── f5b156e319f1_torna_phone_único_e_indexado_no_client.py
 ├── README.md
 ├── requirements.txt
 ├── run.py
@@ -90,4 +97,4 @@
 ├── tree
 └── tree.txt
 
-18 directories, 73 files
+18 directories, 80 files

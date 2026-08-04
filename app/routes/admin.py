@@ -1,6 +1,27 @@
-from flask import Blueprint, render_template, abort
-from flask_login import login_required, current_user
-from ..models import Product, Order
+# app/routes/admin.py
+
+from flask import (
+    Blueprint,
+    render_template,
+    abort,
+    request,
+    redirect,
+    url_for,
+    flash,
+)
+
+from flask_login import (
+    login_required,
+    current_user,
+)
+
+from ..models import (
+    Product,
+    Order,
+)
+
+from ..forms import UserForm
+from ..services.user_service import UserService
 
 admin_bp = Blueprint("admin", __name__, url_prefix="/admin")
 
@@ -35,6 +56,190 @@ def produtos_crud():
 @admin_bp.route("/pedidos/<int:id>")
 @login_required
 def pedido_detalhe(id):
-    from ..models import Order
+    admin_required()
+
     order = Order.query.get_or_404(id)
-    return render_template("admin/pedido_detalhe.html", order=order)
+
+    return render_template(
+        "admin/pedido_detalhe.html",
+        order=order
+    )
+    
+# ==========================================================
+# USUÁRIOS
+# ==========================================================
+
+@admin_bp.route("/usuarios")
+@login_required
+def usuarios_lista():
+    admin_required()
+
+    usuarios = UserService.list_all()
+
+    return render_template(
+        "admin/usuarios_lista.html",
+        usuarios=usuarios
+    )
+
+
+@admin_bp.route(
+    "/usuarios/novo",
+    methods=["GET", "POST"]
+)
+@login_required
+def usuario_novo():
+
+    admin_required()
+
+    form = UserForm()
+
+    if form.validate_on_submit():
+
+        try:
+
+            UserService.create_user(
+                username=form.username.data,
+                email=form.email.data,
+                password=form.password.data,
+                is_admin=form.is_admin.data,
+                is_active=form.is_active.data
+            )
+
+            flash(
+                "Usuário cadastrado com sucesso.",
+                "success"
+            )
+
+            return redirect(
+                url_for("admin.usuarios_lista")
+            )
+
+        except ValueError as e:
+
+            flash(
+                str(e),
+                "error"
+            )
+
+    elif request.method == "POST":
+
+        print(form.errors)
+
+        flash(
+            "Existem erros no formulário.",
+            "warning"
+        )
+
+    return render_template(
+        "admin/usuario_form.html",
+        titulo="Novo Usuário",
+        form=form
+    )
+    
+@admin_bp.route(
+    "/usuarios/<int:user_id>/editar",
+    methods=["GET", "POST"]
+)
+@login_required
+def usuario_editar(user_id):
+
+    admin_required()
+
+    usuario = UserService.get(user_id)
+
+    if not usuario:
+        abort(404)
+
+    form = UserForm(obj=usuario)
+
+    if form.validate_on_submit():
+
+        try:
+
+            UserService.update_user(
+                user=usuario,
+                username=form.username.data,
+                email=form.email.data,
+                is_admin=form.is_admin.data,
+                is_active=form.is_active.data
+            )
+
+            flash(
+                "Usuário atualizado com sucesso.",
+                "success"
+            )
+
+            return redirect(
+                url_for("admin.usuarios_lista")
+            )
+
+        except ValueError as e:
+
+            flash(
+                str(e),
+                "error"
+            )
+
+    return render_template(
+        "admin/usuario_form.html",
+        titulo="Editar Usuário",
+        form=form
+    )
+
+# ==========================================================
+# ALTERAR SENHA
+# ==========================================================
+
+@admin_bp.route(
+    "/usuarios/<int:user_id>/senha",
+    methods=["GET", "POST"]
+)
+@login_required
+def usuario_senha(user_id):
+
+    admin_required()
+
+    usuario = UserService.get(user_id)
+
+    if not usuario:
+        abort(404)
+
+    form = UserForm()
+
+    if request.method == "POST":
+
+        if not form.password.data:
+
+            flash(
+                "Informe a nova senha.",
+                "warning"
+            )
+
+        elif form.password.data != form.confirm_password.data:
+
+            flash(
+                "As senhas não conferem.",
+                "error"
+            )
+
+        else:
+
+            UserService.change_password(
+                usuario,
+                form.password.data
+            )
+
+            flash(
+                "Senha alterada com sucesso.",
+                "success"
+            )
+
+            return redirect(
+                url_for("admin.usuarios_lista")
+            )
+
+    return render_template(
+        "admin/usuario_senha.html",
+        usuario=usuario,
+        form=form
+    )

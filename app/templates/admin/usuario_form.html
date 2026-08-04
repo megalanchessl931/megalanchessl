@@ -1,0 +1,103 @@
+{% extends "layouts/layout_admin.html" %}
+
+{% block title %}
+{{ titulo }}
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <h1>{{ titulo }}</h1>
+
+    <form method="POST">
+
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+
+            {{ form.username.label }}
+
+            {{ form.username(class="form-control") }}
+
+            {% for error in form.username.errors %}
+                <div class="flash error">{{ error }}</div>
+            {% endfor %}
+
+        </div>
+
+        <div class="form-group">
+
+            {{ form.email.label }}
+
+            {{ form.email(class="form-control") }}
+
+            {% for error in form.email.errors %}
+                <div class="flash error">{{ error }}</div>
+            {% endfor %}
+
+        </div>
+
+        <div class="form-group">
+
+            {{ form.password.label }}
+
+            {{ form.password(class="form-control") }}
+
+            {% for error in form.password.errors %}
+                <div class="flash error">{{ error }}</div>
+            {% endfor %}
+
+        </div>
+
+        <div class="form-group">
+
+            {{ form.confirm_password.label }}
+
+            {{ form.confirm_password(class="form-control") }}
+
+            {% for error in form.confirm_password.errors %}
+                <div class="flash error">{{ error }}</div>
+            {% endfor %}
+
+        </div>
+
+        <div class="form-check-row">
+
+            <label class="form-check">
+
+                {{ form.is_admin() }}
+
+                <span>Administrador</span>
+
+            </label>
+
+            <label class="form-check">
+
+                {{ form.is_active() }}
+
+                <span>Usuário ativo</span>
+
+            </label>
+
+        </div>
+
+        <div class="form-actions">
+
+            {{ form.submit(class="btn btn-primary") }}
+
+            <a
+                href="{{ url_for('admin.usuarios_lista') }}"
+                class="btn btn-secondary">
+
+                Cancelar
+
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

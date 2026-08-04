@@ -1,0 +1,80 @@
+{# Bloco compartilhado entre pedido de balcão e pedido público.
+   Espera as variáveis: products, cart, form, action_url. #}
+
+<div class="pedido-grid">
+
+    <section class="cardapio-pedido">
+        <h2>Cardápio</h2>
+        {% for categoria, itens in products | groupby("category") %}
+            <h3 class="categoria-titulo">{{ categoria|e }}</h3>
+            <div class="produtos-grid">
+                {% for product in itens %}
+                    <article class="produto-card">
+                        <img src="{{ url_for('static', filename='images/' + product.image_filename) }}"
+                             alt="{{ product.name|e }}">
+                        <h4>{{ product.name|e }}</h4>
+                        <p class="produto-preco">R$ {{ "%.2f"|format(product.price|float) }}</p>
+                        <div class="produto-add">
+                            <input type="number" min="1" value="1" step="1"
+                                   class="qtd-input" id="qtd-{{ product.id }}">
+                            <button type="button" class="btn-adicionar"
+                                    data-product-id="{{ product.id }}"
+                                    data-qtd-input="qtd-{{ product.id }}">
+                                Adicionar
+                            </button>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Nenhum produto disponível no momento.</p>
+        {% endfor %}
+    </section>
+
+    <aside class="carrinho-box">
+        <h2>Carrinho</h2>
+
+        <ul id="carrinho-itens" class="carrinho-lista"></ul>
+        <p class="carrinho-vazio" id="carrinho-vazio" hidden>Carrinho vazio.</p>
+        <p class="carrinho-total">Total: <strong id="carrinho-total">R$ 0,00</strong></p>
+        <button type="button" id="btn-limpar-carrinho" class="btn-secundario">Limpar carrinho</button>
+
+        <hr>
+
+        <h3>Dados do cliente</h3>
+        <div class="busca-cliente">
+            <label for="busca-telefone">Buscar por telefone</label>
+            <input type="text" id="busca-telefone" placeholder="Digite ao menos 3 dígitos" autocomplete="off">
+            <ul id="resultados-cliente" class="resultados-cliente" hidden></ul>
+        </div>
+
+        <form method="post" action="{{ action_url }}" id="form-finalizar" novalidate>
+            {{ form.hidden_tag() }}
+
+            <label for="cliente-nome">{{ form.name.label.text }}</label>
+            {{ form.name(id="cliente-nome") }}
+            {% for erro in form.name.errors %}<span class="erro-campo">{{ erro }}</span>{% endfor %}
+
+            <label for="cliente-telefone">{{ form.phone.label.text }}</label>
+            {{ form.phone(id="cliente-telefone") }}
+            {% for erro in form.phone.errors %}<span class="erro-campo">{{ erro }}</span>{% endfor %}
+
+            <label for="cliente-endereco">{{ form.address.label.text }}</label>
+            {{ form.address(id="cliente-endereco") }}
+
+            <label for="cliente-bairro">{{ form.neighborhood.label.text }}</label>
+            {{ form.neighborhood(id="cliente-bairro") }}
+
+            <label for="{{ form.notes.id }}">{{ form.notes.label.text }}</label>
+            {{ form.notes() }}
+
+            {{ form.submit(id="btn-finalizar") }}
+        </form>
+    </aside>
+</div>
+
+<script>
+    // Carrinho vindo do servidor na primeira carga da página (evita uma
+    // chamada AJAX extra só para mostrar o que já estava na sessão).
+    window.CARRINHO_INICIAL = {{ cart | tojson }};
+</script>

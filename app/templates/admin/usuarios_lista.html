@@ -1,0 +1,175 @@
+{% extends "layouts/layout_admin.html" %}
+
+{% block title %}
+Usuários
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <h1>Usuários do Sistema</h1>
+
+    <p class="page-subtitle">
+        Gerenciamento de Administradores e Atendentes.
+    </p>
+
+    <div class="form-actions">
+
+        <a
+            href="{{ url_for('admin.usuario_novo') }}"
+            class="btn btn-primary">
+
+            + Novo Usuário
+
+        </a>
+
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th width="60">ID</th>
+
+                <th>Usuário</th>
+
+                <th>E-mail</th>
+
+                <th width="140">Perfil</th>
+
+                <th width="120">Situação</th>
+
+                <th width="170">Criado em</th>
+
+                <th width="320">Ações</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for usuario in usuarios %}
+
+            <tr>
+
+                <td>
+
+                    {{ usuario.id }}
+
+                </td>
+
+                <td>
+
+                    {{ usuario.username }}
+
+                </td>
+
+                <td>
+
+                    {{ usuario.email }}
+
+                </td>
+
+                <td>
+
+                    {% if usuario.is_admin %}
+
+                        Administrador
+
+                    {% else %}
+
+                        Atendente
+
+                    {% endif %}
+
+                </td>
+
+                <td>
+
+                    {% if usuario.is_active %}
+
+                        🟢 Ativo
+
+                    {% else %}
+
+                        🔴 Inativo
+
+                    {% endif %}
+
+                </td>
+
+                <td>
+
+                    {{ usuario.created_at.strftime("%d/%m/%Y %H:%M") }}
+
+                </td>
+
+                <td>
+
+                    <a
+                        href="{{ url_for('admin.usuario_editar', user_id=usuario.id) }}"
+                        class="btn btn-secondary">
+
+                        Editar
+
+                    </a>
+
+                    <a
+                        href="{{ url_for('admin.usuario_senha', user_id=usuario.id) }}"
+                        class="btn btn-secondary">
+
+                        Senha
+
+                    </a>
+
+                    {% if usuario.is_active %}
+
+                        <a
+                            href="#"
+                            class="btn btn-danger">
+
+                            Desativar
+
+                        </a>
+
+                    {% else %}
+
+                        <a
+                            href="#"
+                            class="btn btn-success">
+
+                            Ativar
+
+                        </a>
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+        {% else %}
+
+            <tr>
+
+                <td colspan="7">
+
+                    Nenhum usuário cadastrado.
+
+                </td>
+
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}
