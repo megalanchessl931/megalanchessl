@@ -13,3 +13,4 @@ bandit_report.html
 .coverage
 htmlcov/
 .DS_Store
+backup/
