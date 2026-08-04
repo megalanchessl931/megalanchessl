@@ -1,0 +1,154 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /home/carlos/megalanchessl/venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/carlos/megalanchessl
+configfile: pytest.ini
+collecting ... collected 117 items
+
+tests/test_api.py::test_cart_get_retorna_carrinho_vazio PASSED           [  0%]
+tests/test_api.py::test_cart_add_adiciona_produto PASSED                 [  1%]
+tests/test_api.py::test_cart_add_aceita_form_data PASSED                 [  2%]
+tests/test_api.py::test_cart_add_soma_mesmo_produto PASSED               [  3%]
+tests/test_api.py::test_cart_add_sem_product_id_retorna_400 PASSED       [  4%]
+tests/test_api.py::test_cart_add_produto_inexistente_retorna_400 PASSED  [  5%]
+tests/test_api.py::test_cart_add_produto_inativo_retorna_400 PASSED      [  5%]
+tests/test_api.py::test_cart_add_quantidade_invalida_retorna_400 PASSED  [  6%]
+tests/test_api.py::test_cart_remove_remove_produto PASSED                [  7%]
+tests/test_api.py::test_cart_remove_sem_product_id_retorna_400 PASSED    [  8%]
+tests/test_api.py::test_cart_update_atualiza_quantidade PASSED           [  9%]
+tests/test_api.py::test_cart_update_quantidade_zero_remove_produto PASSED [ 10%]
+tests/test_api.py::test_cart_update_item_inexistente_retorna_400 PASSED  [ 11%]
+tests/test_api.py::test_cart_update_sem_dados_obrigatorios_retorna_400 PASSED [ 11%]
+tests/test_api.py::test_cart_clear_esvazia_carrinho PASSED               [ 12%]
+tests/test_api.py::test_client_search_exige_minimo_tres_digitos PASSED   [ 13%]
+tests/test_api.py::test_client_search_normaliza_telefone PASSED          [ 14%]
+tests/test_api.py::test_client_search_busca_parcial PASSED               [ 15%]
+tests/test_api.py::test_client_search_retorna_campos_do_cliente PASSED   [ 16%]
+tests/test_api.py::test_client_create_cria_cliente PASSED                [ 17%]
+tests/test_api.py::test_client_create_aceita_form_data PASSED            [ 17%]
+tests/test_api.py::test_client_create_atualiza_cliente_existente PASSED  [ 18%]
+tests/test_api.py::test_client_create_sem_nome_retorna_400 PASSED        [ 19%]
+tests/test_api.py::test_client_create_sem_telefone_retorna_400 PASSED    [ 20%]
+tests/test_api.py::test_client_create_coloca_cliente_no_carrinho PASSED  [ 21%]
+tests/test_api.py::test_client_search_ordena_por_nome PASSED             [ 22%]
+tests/test_app.py::test_app_is_created PASSED                            [ 23%]
+tests/test_app.py::test_app_has_expected_blueprints PASSED               [ 23%]
+tests/test_app.py::test_database_is_available PASSED                     [ 24%]
+tests/test_auth.py::test_login_page PASSED                               [ 25%]
+tests/test_auth.py::test_register_page PASSED                            [ 26%]
+tests/test_auth.py::test_register_valid_user PASSED                      [ 27%]
+tests/test_auth.py::test_register_normalizes_username_and_email PASSED   [ 28%]
+tests/test_auth.py::test_register_duplicate_username PASSED              [ 29%]
+tests/test_auth.py::test_register_duplicate_email PASSED                 [ 29%]
+tests/test_auth.py::test_login_with_correct_password PASSED              [ 30%]
+tests/test_auth.py::test_login_with_wrong_password PASSED                [ 31%]
+tests/test_auth.py::test_login_rejects_unknown_user PASSED               [ 32%]
+tests/test_auth.py::test_authenticated_user_is_redirected_from_login PASSED [ 33%]
+tests/test_auth.py::test_authenticated_user_is_redirected_from_register PASSED [ 34%]
+tests/test_auth.py::test_logout PASSED                                   [ 35%]
+tests/test_cart_service.py::test_carrinho_inicial_vazio PASSED           [ 35%]
+tests/test_cart_service.py::test_adicionar_produto_ao_carrinho PASSED    [ 36%]
+tests/test_cart_service.py::test_adicionar_mesmo_produto_soma_quantidade PASSED [ 37%]
+tests/test_cart_service.py::test_adicionar_dois_produtos_calcula_total PASSED [ 38%]
+tests/test_cart_service.py::test_remover_produto PASSED                  [ 39%]
+tests/test_cart_service.py::test_atualizar_quantidade PASSED             [ 40%]
+tests/test_cart_service.py::test_atualizar_quantidade_zero_remove_produto PASSED [ 41%]
+tests/test_cart_service.py::test_limpar_carrinho PASSED                  [ 41%]
+tests/test_cart_service.py::test_carrinho_com_taxa_entrega PASSED        [ 42%]
+tests/test_cart_service.py::test_produto_inativo_nao_pode_ser_adicionado PASSED [ 43%]
+tests/test_cart_service.py::test_produto_inexistente_nao_pode_ser_adicionado PASSED [ 44%]
+tests/test_cart_service.py::test_quantidade_invalida PASSED              [ 45%]
+tests/test_cart_service.py::test_quantidade_zero_na_adicao_e_invalida PASSED [ 46%]
+tests/test_cart_service.py::test_set_client_data PASSED                  [ 47%]
+tests/test_cart_service.py::test_set_notes_remove_espacos PASSED         [ 47%]
+tests/test_cart_service.py::test_preco_do_produto_vem_do_banco PASSED    [ 48%]
+tests/test_cart_service.py::test_item_inexistente_nao_pode_ser_atualizado PASSED [ 49%]
+tests/test_models.py::test_create_user PASSED                            [ 50%]
+tests/test_models.py::test_user_password_is_valid PASSED                 [ 51%]
+tests/test_models.py::test_create_product PASSED                         [ 52%]
+tests/test_models.py::test_create_client PASSED                          [ 52%]
+tests/test_models.py::test_create_order_with_client PASSED               [ 53%]
+tests/test_models.py::test_create_order_item PASSED                      [ 54%]
+tests/test_models.py::test_order_items_relationship PASSED               [ 55%]
+tests/test_models.py::test_order_cascade_deletes_items PASSED            [ 56%]
+tests/test_order_service.py::test_criar_pedido_a_partir_do_carrinho PASSED [ 57%]
+tests/test_order_service.py::test_criar_cliente_novo_automaticamente PASSED [ 58%]
+tests/test_order_service.py::test_reutilizar_cliente_existente_pelo_telefone PASSED [ 58%]
+tests/test_order_service.py::test_atualizar_dados_do_cliente_existente PASSED [ 59%]
+tests/test_order_service.py::test_carrinho_vazio_nao_cria_pedido PASSED  [ 60%]
+tests/test_order_service.py::test_nome_do_cliente_e_obrigatorio PASSED   [ 61%]
+tests/test_order_service.py::test_telefone_do_cliente_e_obrigatorio PASSED [ 62%]
+tests/test_order_service.py::test_produto_desativado_impede_finalizacao PASSED [ 63%]
+tests/test_order_service.py::test_preco_do_pedido_vem_do_banco PASSED    [ 64%]
+tests/test_order_service.py::test_calcular_subtotal_com_quantidade PASSED [ 64%]
+tests/test_order_service.py::test_calcular_taxa_de_entrega PASSED        [ 65%]
+tests/test_order_service.py::test_taxa_de_entrega_fornecida_pelo_argumento_tem_precedencia PASSED [ 66%]
+tests/test_order_service.py::test_salvar_observacoes_do_pedido PASSED    [ 67%]
+tests/test_order_service.py::test_pedido_de_balcao_associa_usuario PASSED [ 68%]
+tests/test_order_service.py::test_pedido_publico_nao_associa_usuario PASSED [ 69%]
+tests/test_orders.py::test_pedido_publico_get_exibe_formulario PASSED    [ 70%]
+tests/test_orders.py::test_pedido_balcao_exige_login PASSED              [ 70%]
+tests/test_orders.py::test_pedido_balcao_finalizar_exige_login PASSED    [ 71%]
+tests/test_orders.py::test_pedido_publico_sem_dados_obrigatorios_retorna_formulario PASSED [ 72%]
+tests/test_orders.py::test_pedido_publico_com_carrinho_vazio_mostra_erro PASSED [ 73%]
+tests/test_orders.py::test_pedido_publico_cria_pedido PASSED             [ 74%]
+tests/test_orders.py::test_pedido_publico_limpa_carrinho_apos_finalizacao PASSED [ 75%]
+tests/test_orders.py::test_pedido_balcao_cria_pedido_associado_usuario PASSED [ 76%]
+tests/test_orders.py::test_pedido_publico_produto_desativado_mostra_erro PASSED [ 76%]
+tests/test_orders.py::test_pedido_publico_atualiza_cliente_existente PASSED [ 77%]
+tests/test_orders.py::test_pedido_balcao_get_exibe_produtos_ativos PASSED [ 78%]
+tests/test_orders.py::test_pedido_publico_get_exibe_produtos_ativos PASSED [ 79%]
+tests/test_products.py::test_criar_produto_com_dados_completos PASSED    [ 80%]
+tests/test_products.py::test_produto_recebe_placeholder_como_imagem_padrao PASSED [ 81%]
+tests/test_products.py::test_produto_fica_ativo_por_padrao PASSED        [ 82%]
+tests/test_products.py::test_produto_recebe_ordem_zero_por_padrao PASSED [ 82%]
+tests/test_products.py::test_produto_inativo_pode_ser_salvo PASSED       [ 83%]
+tests/test_products.py::test_menu_exibe_somente_produtos_ativos PASSED   [ 84%]
+tests/test_products.py::test_menu_ordena_produtos_por_ordem PASSED       [ 85%]
+tests/test_products.py::test_menu_ordena_por_categoria_depois_da_ordem PASSED [ 86%]
+tests/test_products.py::test_menu_ordena_por_nome_com_mesma_ordem_e_categoria PASSED [ 87%]
+tests/test_public.py::test_index_page PASSED                             [ 88%]
+tests/test_public.py::test_contact_page PASSED                           [ 88%]
+tests/test_public.py::test_menu_page PASSED                              [ 89%]
+tests/test_public.py::test_active_product_appears_on_menu PASSED         [ 90%]
+tests/test_public.py::test_inactive_product_does_not_appear_on_menu PASSED [ 91%]
+tests/test_public.py::test_menu_orders_active_products PASSED            [ 92%]
+tests/test_public.py::test_nonexistent_page_returns_404 PASSED           [ 93%]
+tests/test_security.py::test_admin_dashboard_sem_login_exige_autenticacao PASSED [ 94%]
+tests/test_security.py::test_admin_pedidos_sem_login_exige_autenticacao PASSED [ 94%]
+tests/test_security.py::test_admin_produtos_sem_login_exige_autenticacao PASSED [ 95%]
+tests/test_security.py::test_usuario_comum_nao_acessa_dashboard_admin PASSED [ 96%]
+tests/test_security.py::test_usuario_comum_nao_acessa_produtos_admin PASSED [ 97%]
+tests/test_security.py::test_usuario_comum_nao_acessa_pedidos_admin PASSED [ 98%]
+tests/test_security.py::test_usuario_comum_nao_acessa_balcao PASSED      [ 99%]
+tests/test_security.py::test_usuario_nao_logado_nao_acessa_balcao PASSED [100%]
+
+=============================== warnings summary ===============================
+tests/test_api.py: 26 warnings
+tests/test_app.py: 3 warnings
+tests/test_auth.py: 12 warnings
+tests/test_cart_service.py: 17 warnings
+tests/test_models.py: 8 warnings
+tests/test_order_service.py: 15 warnings
+tests/test_orders.py: 12 warnings
+tests/test_products.py: 9 warnings
+tests/test_public.py: 7 warnings
+tests/test_security.py: 8 warnings
+  /home/carlos/megalanchessl/venv/lib/python3.13/site-packages/flask_session/filesystem/filesystem.py:57: DeprecationWarning: 'SESSION_FILE_DIR' is deprecated and will be removed in a future release. Instead pass FileSystemCache(directory, threshold, mode) instance as SESSION_CACHELIB.
+    warnings.warn(
+
+tests/test_api.py: 26 warnings
+tests/test_app.py: 3 warnings
+tests/test_auth.py: 12 warnings
+tests/test_cart_service.py: 17 warnings
+tests/test_models.py: 8 warnings
+tests/test_order_service.py: 15 warnings
+tests/test_orders.py: 12 warnings
+tests/test_products.py: 9 warnings
+tests/test_public.py: 7 warnings
+tests/test_security.py: 8 warnings
+  /home/carlos/megalanchessl/venv/lib/python3.13/site-packages/flask_session/filesystem/filesystem.py:75: DeprecationWarning: FileSystemSessionInterface is deprecated and will be removed in a future release. Instead use the CacheLib backend directly.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+====================== 117 passed, 234 warnings in 11.23s ======================

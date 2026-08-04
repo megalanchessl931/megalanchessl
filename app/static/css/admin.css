@@ -141,6 +141,8 @@ body{
 
     display:flex;
 
+    min-width:0;
+
 }
 
 /* ==========================================================
@@ -150,6 +152,8 @@ body{
 .admin-sidebar{
 
     width:260px;
+
+    flex-shrink:0;
 
     background:var(--primary);
 
@@ -217,6 +221,8 @@ body{
 
     flex:1;
 
+    min-width:0;
+
     padding:35px;
 
     overflow:auto;
@@ -258,6 +264,8 @@ h2{
     box-shadow:var(--shadow);
 
     border-left:6px solid var(--primary);
+
+    overflow-x:auto;
 
 }
 
@@ -321,9 +329,11 @@ tbody tr:hover{
 
     display:flex;
 
-    gap:8px;
+    flex-direction:column;
 
-    flex-wrap:nowrap;
+    gap:6px;
+
+    align-items:flex-start;
 
 }
 

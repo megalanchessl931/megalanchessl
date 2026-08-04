@@ -1,0 +1,13 @@
+python3 -m venv venv
+source venv/bin/activate
+
+
+# atualizar o pip e os requeriments
+
+pip install -r requirements.txt --upgrade
+
+
+# rode seus testes (ex: pytest, manage.py test, etc.)
+pip install pytest
+pytest -v
+

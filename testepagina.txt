@@ -1,0 +1,14 @@
+# Verificar se o site está no ar
+curl -I https://megalanchessl.onrender.com
+
+# Criar pasta de relatórios
+mkdir -p ~/zap_reports
+
+# Baseline scan (seguro)
+docker run --rm -v ~/zap_reports:/zap/wrk/:rw zaproxy/zap-stable zap-baseline.py -t https://megalanchessl.onrender.com -r /zap/wrk/zap_baseline_report.html
+
+# Full scan (ativo) - CUIDADO COM DADOS!
+docker run --rm -v ~/zap_reports:/zap/wrk/:rw zaproxy/zap-stable zap-full-scan.py -t https://megalanchessl.onrender.com -g zap_config.conf -r /zap/wrk/zap_report.html -m 10
+
+# Abrir relatórios (opcional)
+firefox ~/zap_reports/zap_baseline_report.html ~/zap_reports/zap_report.html

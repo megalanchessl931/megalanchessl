@@ -112,9 +112,7 @@ def usuario_novo():
                 email=form.email.data,
                 password=form.password.data,
                 is_admin=form.is_admin.data,
-                is_active=form.is_active.data,
-                phone=form.phone.data,
-                notes=form.notes.data
+                is_active=form.is_active.data
             )
 
             flash(
@@ -173,9 +171,7 @@ def usuario_editar(user_id):
                 username=form.username.data,
                 email=form.email.data,
                 is_admin=form.is_admin.data,
-                is_active=form.is_active.data,
-                phone=form.phone.data,
-                notes=form.notes.data
+                is_active=form.is_active.data
             )
 
             flash(

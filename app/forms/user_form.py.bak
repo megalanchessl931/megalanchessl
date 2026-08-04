@@ -2,7 +2,6 @@ from flask_wtf import FlaskForm
 
 from wtforms import (
     StringField,
-    TextAreaField,
     PasswordField,
     BooleanField,
     SubmitField
@@ -33,22 +32,6 @@ class UserForm(FlaskForm):
             DataRequired(),
             Email(),
             Length(max=100)
-        ]
-    )
-
-    phone = StringField(
-        "Telefone (WhatsApp)",
-        validators=[
-            Optional(),
-            Length(max=20)
-        ]
-    )
-
-    notes = TextAreaField(
-        "Observações (endereço)",
-        validators=[
-            Optional(),
-            Length(max=2000)
         ]
     )
 

@@ -40,30 +40,6 @@
 
         <div class="form-group">
 
-            {{ form.phone.label }}
-
-            {{ form.phone(class="form-control") }}
-
-            {% for error in form.phone.errors %}
-                <div class="flash error">{{ error }}</div>
-            {% endfor %}
-
-        </div>
-
-        <div class="form-group">
-
-            {{ form.notes.label }}
-
-            {{ form.notes(class="form-control") }}
-
-            {% for error in form.notes.errors %}
-                <div class="flash error">{{ error }}</div>
-            {% endfor %}
-
-        </div>
-
-        <div class="form-group">
-
             {{ form.password.label }}
 
             {{ form.password(class="form-control") }}
@@ -110,7 +86,13 @@
 
             {{ form.submit(class="btn btn-primary") }}
 
-            <a href="{{ url_for('admin.usuarios_lista') }}" class="btn btn-secondary">Cancelar</a>
+            <a
+                href="{{ url_for('admin.usuarios_lista') }}"
+                class="btn btn-secondary">
+
+                Cancelar
+
+            </a>
 
         </div>
 

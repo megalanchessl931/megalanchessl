@@ -56,9 +56,7 @@ class UserService:
         email,
         password,
         is_admin=False,
-        is_active=True,
-        phone="",
-        notes=""
+        is_active=True
     ):
         """
         Cria um novo usuário.
@@ -81,9 +79,7 @@ class UserService:
             username=username,
             email=email,
             is_admin=is_admin,
-            is_active=is_active,
-            phone=(phone or "").strip(),
-            notes=(notes or "").strip()
+            is_active=is_active
         )
 
         user.set_password(password)
@@ -99,9 +95,7 @@ class UserService:
         username,
         email,
         is_admin,
-        is_active,
-        phone="",
-        notes=""
+        is_active
     ):
         """
         Atualiza os dados de um usuário.
@@ -152,8 +146,6 @@ class UserService:
         user.email = email
         user.is_admin = is_admin
         user.is_active = is_active
-        user.phone = (phone or "").strip()
-        user.notes = (notes or "").strip()
 
         db.session.commit()
 

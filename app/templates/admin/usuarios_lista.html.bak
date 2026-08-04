@@ -16,7 +16,13 @@ Usuários
 
     <div class="form-actions">
 
-        <a href="{{ url_for('admin.usuario_novo') }}" class="btn btn-primary">+ Novo Usuário</a>
+        
+            href="{{ url_for('admin.usuario_novo') }}"
+            class="btn btn-primary">
+
+            + Novo Usuário
+
+        </a>
 
     </div>
 
@@ -42,7 +48,7 @@ Usuários
 
                 <th width="170">Criado em</th>
 
-                <th width="150">Ações</th>
+                <th width="360">Ações</th>
 
             </tr>
 
@@ -118,27 +124,51 @@ Usuários
 
                 </td>
 
-                <td>
+				<td>
 
-                    <div class="table-actions">
+					<div class="table-actions">
 
-                        <a href="{{ url_for('admin.usuario_editar', user_id=usuario.id) }}" class="btn btn-secondary">Editar</a>
+						
+							href="{{ url_for('admin.usuario_editar', user_id=usuario.id) }}"
+							class="btn btn-secondary">
 
-                        <a href="{{ url_for('admin.usuario_senha', user_id=usuario.id) }}" class="btn btn-secondary">Senha</a>
+							Editar
 
-                        {% if usuario.is_active %}
+						</a>
 
-                            <a href="{{ url_for('admin.usuario_desativar', user_id=usuario.id) }}" class="btn btn-danger">Desativar</a>
+						
+							href="{{ url_for('admin.usuario_senha', user_id=usuario.id) }}"
+							class="btn btn-secondary">
 
-                        {% else %}
+							Senha
 
-                            <a href="{{ url_for('admin.usuario_ativar', user_id=usuario.id) }}" class="btn btn-success">Ativar</a>
+						</a>
 
-                        {% endif %}
+						{% if usuario.is_active %}
 
-                    </div>
+							
+								href="{{ url_for('admin.usuario_desativar', user_id=usuario.id) }}"
+								class="btn btn-danger">
 
-                </td>
+								Desativar
+
+							</a>
+
+						{% else %}
+
+							
+								href="{{ url_for('admin.usuario_ativar', user_id=usuario.id) }}"
+								class="btn btn-success">
+
+								Ativar
+
+							</a>
+
+						{% endif %}
+
+					</div>
+
+				</td>
 
             </tr>
 

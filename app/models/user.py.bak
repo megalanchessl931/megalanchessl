@@ -25,16 +25,6 @@ class User(UserMixin, db.Model):
         index=True
     )
 
-    phone = db.Column(
-        db.String(20),
-        nullable=True
-    )
-
-    notes = db.Column(
-        db.Text,
-        nullable=True
-    )
-
     password_hash = db.Column(
         db.String(128),
         nullable=False

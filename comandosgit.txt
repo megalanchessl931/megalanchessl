@@ -1,0 +1,30 @@
+# adiciona arquivos alterados
+
+git add .
+
+
+git commit -m "Implementa no painel administrativo e gerenciamento de usuários. Adicionando telefone, e observações"
+
+
+git push origin main
+
+# cadastrar a senha
+git config --global credential.helper store
+
+# para baixar o versionamento que está no site github para não ficar diferente
+git pull --rebase origin main
+
+
+
+git push origin main
+Username for 'https://github.com': megalanches931
+Password for 'https://megalanches931@github.com': 
+To https://github.com/megalanchessl931/megalanchessl.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/megalanchessl931/megalanchessl.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+(venv) carlos@debian:~/megalanchessl$ 
