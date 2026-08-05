@@ -1,0 +1,86 @@
+{% extends "layouts/layout_admin.html" %}
+
+{% block title %}
+Reajustar Preços
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <h1>Reajustar Preços</h1>
+
+    <p class="page-subtitle">
+        Aplique um reajuste percentual ou de valor fixo em todos os produtos
+        ou em apenas um produto específico. Use valores negativos para reduzir preços.
+    </p>
+
+    <form method="POST">
+
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+
+            {{ form.scope.label }}
+
+            {{ form.scope(class="form-control") }}
+
+            {% for error in form.scope.errors %}
+                <div class="flash error">{{ error }}</div>
+            {% endfor %}
+
+        </div>
+
+        <div class="form-group">
+
+            {{ form.product_id.label }}
+
+            {{ form.product_id(class="form-control") }}
+
+            <small>Só é usado quando "Aplicar em" for "Um produto específico".</small>
+
+            {% for error in form.product_id.errors %}
+                <div class="flash error">{{ error }}</div>
+            {% endfor %}
+
+        </div>
+
+        <div class="form-group">
+
+            {{ form.mode.label }}
+
+            {{ form.mode(class="form-control") }}
+
+            {% for error in form.mode.errors %}
+                <div class="flash error">{{ error }}</div>
+            {% endfor %}
+
+        </div>
+
+        <div class="form-group">
+
+            {{ form.value.label }}
+
+            {{ form.value(class="form-control") }}
+
+            <small>Percentual: ex. 10 para +10%, -5 para -5%. Valor fixo: ex. 1.50 para +R$1,50.</small>
+
+            {% for error in form.value.errors %}
+                <div class="flash error">{{ error }}</div>
+            {% endfor %}
+
+        </div>
+
+        <div class="form-actions">
+
+            {{ form.submit(class="btn btn-primary") }}
+
+            <a href="{{ url_for('admin.produtos_crud') }}" class="btn btn-secondary">Cancelar</a>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

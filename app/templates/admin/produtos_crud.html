@@ -1,12 +1,187 @@
 {% extends "layouts/layout_admin.html" %}
-{% block title %}Produtos{% endblock %}
+
+{% block title %}
+Produtos
+{% endblock %}
+
 {% block content %}
-<h1>Produtos</h1>
-{% for product in products %}
-    <article>
-        <strong>{{ product.name|e }}</strong>
-        <span>{{ product.category|e }}</span>
-        <span>R$ {{ "%.2f"|format(product.price|float) }}</span>
-    </article>
-{% endfor %}
+
+<div class="card">
+
+    <h1>Produtos</h1>
+
+    <p class="page-subtitle">
+        Cardápio do sistema.
+    </p>
+
+    <div class="form-actions">
+
+        <a href="{{ url_for('admin.produto_novo') }}" class="btn btn-primary">+ Novo Produto</a>
+
+        <a href="{{ url_for('admin.produtos_reajustar_precos') }}" class="btn btn-secondary">Reajustar Preços</a>
+
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th width="60">
+
+                    <a href="{{ url_for('admin.produtos_crud', sort='id', dir='desc' if sort == 'id' and direction == 'asc' else 'asc') }}" class="sort-link">
+                        ID{% if sort == 'id' %} {{ '▲' if direction == 'asc' else '▼' }}{% endif %}
+                    </a>
+
+                </th>
+
+                <th width="70">Imagem</th>
+
+                <th>
+
+                    <a href="{{ url_for('admin.produtos_crud', sort='name', dir='desc' if sort == 'name' and direction == 'asc' else 'asc') }}" class="sort-link">
+                        Nome{% if sort == 'name' %} {{ '▲' if direction == 'asc' else '▼' }}{% endif %}
+                    </a>
+
+                </th>
+
+                <th width="140">
+
+                    <a href="{{ url_for('admin.produtos_crud', sort='category', dir='desc' if sort == 'category' and direction == 'asc' else 'asc') }}" class="sort-link">
+                        Categoria{% if sort == 'category' %} {{ '▲' if direction == 'asc' else '▼' }}{% endif %}
+                    </a>
+
+                </th>
+
+                <th width="110">
+
+                    <a href="{{ url_for('admin.produtos_crud', sort='price', dir='desc' if sort == 'price' and direction == 'asc' else 'asc') }}" class="sort-link">
+                        Preço{% if sort == 'price' %} {{ '▲' if direction == 'asc' else '▼' }}{% endif %}
+                    </a>
+
+                </th>
+
+                <th width="90">
+
+                    <a href="{{ url_for('admin.produtos_crud', sort='order', dir='desc' if sort == 'order' and direction == 'asc' else 'asc') }}" class="sort-link">
+                        Ordem{% if sort == 'order' %} {{ '▲' if direction == 'asc' else '▼' }}{% endif %}
+                    </a>
+
+                </th>
+
+                <th width="110">
+
+                    <a href="{{ url_for('admin.produtos_crud', sort='is_active', dir='desc' if sort == 'is_active' and direction == 'asc' else 'asc') }}" class="sort-link">
+                        Situação{% if sort == 'is_active' %} {{ '▲' if direction == 'asc' else '▼' }}{% endif %}
+                    </a>
+
+                </th>
+
+                <th width="220">Ações</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for product in products %}
+
+            <tr>
+
+                <td>
+                    {{ product.id }}
+                </td>
+
+                <td>
+                    <img
+                        src="{{ url_for('static', filename='images/' + product.image_filename) }}"
+                        alt="{{ product.name }}"
+                        width="48"
+                    >
+                </td>
+
+                <td>
+                    {{ product.name }}
+                </td>
+
+                <td>
+                    {{ product.category }}
+                </td>
+
+                <td>
+                    R$ {{ "%.2f"|format(product.price|float) }}
+                </td>
+
+                <td>
+                    {{ product.order }}
+                </td>
+
+                <td>
+
+                    {% if product.is_active %}
+
+                        🟢 Ativo
+
+                    {% else %}
+
+                        🔴 Inativo
+
+                    {% endif %}
+
+                </td>
+
+                <td>
+
+                    <div class="table-actions">
+
+                        <a href="{{ url_for('admin.produto_editar', product_id=product.id) }}" class="btn btn-secondary">Editar</a>
+
+                        {% if product.is_active %}
+
+                            <a href="{{ url_for('admin.produto_desativar', product_id=product.id) }}" class="btn btn-danger">Desativar</a>
+
+                        {% else %}
+
+                            <a href="{{ url_for('admin.produto_ativar', product_id=product.id) }}" class="btn btn-success">Ativar</a>
+
+                        {% endif %}
+
+                        <form
+                            method="POST"
+                            action="{{ url_for('admin.produto_excluir', product_id=product.id) }}"
+                            onsubmit="return confirm('Excluir o produto \'{{ product.name }}\'? Essa ação não pode ser desfeita.');"
+                        >
+
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                            <button type="submit" class="btn btn-danger">Excluir</button>
+
+                        </form>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        {% else %}
+
+            <tr>
+
+                <td colspan="8">
+                    Nenhum produto cadastrado.
+                </td>
+
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
 {% endblock %}

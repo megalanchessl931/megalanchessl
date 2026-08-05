@@ -1,3 +1,5 @@
+# config.py
+
 import os
 from pathlib import Path
 from dotenv import load_dotenv
@@ -38,6 +40,12 @@ class Config:
     PRINT_DEVICE = os.getenv("PRINT_DEVICE", "")
     MAX_CONTENT_LENGTH = 5 * 1024 * 1024
 
+    # ---- Upload de imagens de produtos ----
+    # Salva direto em static/images (sem subpasta), pois os templates
+    # existentes (menu.html, _pedido_widget.html) montam o caminho como
+    # 'images/' + product.image_filename.
+    UPLOAD_FOLDER_PRODUTOS = str(BASE_DIR / "app" / "static" / "images")
+
     # ---- Carrinho (Flask-Session) ----
     # Sessão do lado do servidor: o carrinho não fica no cookie do navegador,
     # só um identificador. Guardado em arquivos locais (sem dependência extra
@@ -50,9 +58,31 @@ class Config:
 class DevelopmentConfig(Config):
     DEBUG = True
     FORCE_HTTPS = False
+    SESSION_COOKIE_SECURE = False
+    REMEMBER_COOKIE_SECURE = False
+    SESSION_COOKIE_DOMAIN = None  # ← Adicione esta linha
+    WTF_CSRF_SSL_STRICT = False   # ← Adicione esta linha
 
+class ProductionConfig(Config):
+    DEBUG = False
+    FORCE_HTTPS = True
+    SESSION_COOKIE_SECURE = os.getenv("SESSION_COOKIE_SECURE", "false").lower() == "true"
+    REMEMBER_COOKIE_SECURE = SESSION_COOKIE_SECURE
+
+"""
+class ProductionConfig(Config):
+    DEBUG = False
+    FORCE_HTTPS = True
+    # Não trava mais o cookie em Secure; controle por variável de ambiente.
+    # No Render (HTTPS), defina SESSION_COOKIE_SECURE=true nas variáveis de lá.
+    SESSION_COOKIE_SECURE = os.getenv("SESSION_COOKIE_SECURE", "false").lower() == "true"
+    REMEMBER_COOKIE_SECURE = SESSION_COOKIE_SECURE
+"""    
+"""
+# original
 class ProductionConfig(Config):
     DEBUG = False
     FORCE_HTTPS = True
     SESSION_COOKIE_SECURE = True
     REMEMBER_COOKIE_SECURE = True
+"""

@@ -1,5 +1,9 @@
 # app/routes/admin.py
 
+# app/routes/admin.py
+
+from decimal import Decimal
+
 from flask import (
     Blueprint,
     render_template,
@@ -8,6 +12,7 @@ from flask import (
     redirect,
     url_for,
     flash,
+    current_app,
 )
 
 from flask_login import (
@@ -15,15 +20,18 @@ from flask_login import (
     current_user,
 )
 
+from sqlalchemy.exc import IntegrityError
+
 from ..models import (
     db,
     Product,
     Order,
 )
 
-from ..forms import UserForm
+from ..forms import UserForm, ProductForm, PriceUpdateForm
 from ..services.user_service import UserService
 from ..services import printer_service
+from ..services import product_service
 
 admin_bp = Blueprint("admin", __name__, url_prefix="/admin")
 
@@ -48,12 +56,225 @@ def pedidos_lista():
     orders = Order.query.order_by(Order.created_at.desc()).limit(100).all()
     return render_template("admin/pedidos_lista.html", orders=orders)
 
+# ==========================================================
+# PRODUTOS
+# ==========================================================
+
 @admin_bp.get("/produtos")
 @login_required
 def produtos_crud():
     admin_required()
-    products = Product.query.order_by(Product.order.asc(), Product.name.asc()).all()
-    return render_template("admin/produtos_crud.html", products=products)
+
+    # Colunas que podem ser usadas para ordenar, mapeadas para o
+    # campo real do modelo. Uma "lista branca" evita que alguém
+    # passe um valor arbitrário em ?sort= e quebre a consulta.
+    COLUNAS_ORDENACAO = {
+        "id": Product.id,
+        "name": Product.name,
+        "category": Product.category,
+        "price": Product.price,
+        "order": Product.order,
+        "is_active": Product.is_active,
+    }
+
+    sort = request.args.get("sort", "order")
+    direction = request.args.get("dir", "asc")
+
+    coluna = COLUNAS_ORDENACAO.get(sort, Product.order)
+
+    if direction == "desc":
+        coluna = coluna.desc()
+    else:
+        direction = "asc"  # normaliza qualquer valor inválido para "asc"
+
+    # Critério de desempate estável: nome, pra produtos com o mesmo
+    # valor na coluna ordenada não ficarem "pulando" de posição.
+    products = Product.query.order_by(coluna, Product.name.asc()).all()
+
+    return render_template(
+        "admin/produtos_crud.html",
+        products=products,
+        sort=sort,
+        direction=direction,
+    )
+
+
+@admin_bp.route("/produtos/novo", methods=["GET", "POST"])
+@login_required
+def produto_novo():
+    admin_required()
+
+    form = ProductForm()
+
+    if form.validate_on_submit():
+
+        image_filename = None
+        if form.image.data:
+            image_filename = product_service.salvar_imagem_produto(
+                form.image.data,
+                current_app.config["UPLOAD_FOLDER_PRODUTOS"]
+            )
+
+        try:
+            product_service.criar_produto(
+                name=form.name.data,
+                description=form.description.data,
+                price=form.price.data,
+                category=form.category.data,
+                image_filename=image_filename,
+                order=form.order.data,
+                is_active=form.is_active.data,
+            )
+
+            flash("Produto cadastrado com sucesso.", "success")
+            return redirect(url_for("admin.produtos_crud"))
+
+        except IntegrityError:
+            db.session.rollback()
+            flash("Já existe um produto cadastrado com esse nome.", "error")
+
+    elif request.method == "POST":
+        flash("Existem erros no formulário.", "warning")
+
+    return render_template(
+        "admin/produto_form.html",
+        titulo="Novo Produto",
+        form=form,
+        product=None
+    )
+
+
+@admin_bp.route("/produtos/<int:product_id>/editar", methods=["GET", "POST"])
+@login_required
+def produto_editar(product_id):
+    admin_required()
+
+    product = Product.query.get_or_404(product_id)
+
+    form = ProductForm(obj=product)
+
+    if form.validate_on_submit():
+
+        image_filename = None
+        if form.image.data:
+            image_filename = product_service.salvar_imagem_produto(
+                form.image.data,
+                current_app.config["UPLOAD_FOLDER_PRODUTOS"]
+            )
+
+        try:
+            product_service.atualizar_produto(
+                product,
+                name=form.name.data,
+                description=form.description.data,
+                price=form.price.data,
+                category=form.category.data,
+                image_filename=image_filename,
+                order=form.order.data,
+                is_active=form.is_active.data,
+            )
+
+            flash("Produto atualizado com sucesso.", "success")
+            return redirect(url_for("admin.produtos_crud"))
+
+        except IntegrityError:
+            db.session.rollback()
+            flash("Já existe um produto cadastrado com esse nome.", "error")
+
+    elif request.method == "GET":
+        # Preenche o campo de preço com o valor atual (obj= não cobre DecimalField com places)
+        form.price.data = product.price
+
+    return render_template(
+        "admin/produto_form.html",
+        titulo="Editar Produto",
+        form=form,
+        product=product
+    )
+
+
+@admin_bp.route("/produtos/<int:product_id>/ativar")
+@login_required
+def produto_ativar(product_id):
+    admin_required()
+
+    product = Product.query.get_or_404(product_id)
+    product_service.ativar_produto(product)
+
+    flash("Produto ativado com sucesso.", "success")
+    return redirect(url_for("admin.produtos_crud"))
+
+
+@admin_bp.route("/produtos/<int:product_id>/desativar")
+@login_required
+def produto_desativar(product_id):
+    admin_required()
+
+    product = Product.query.get_or_404(product_id)
+    product_service.desativar_produto(product)
+
+    flash("Produto desativado com sucesso.", "success")
+    return redirect(url_for("admin.produtos_crud"))
+
+
+@admin_bp.route("/produtos/<int:product_id>/excluir", methods=["POST"])
+@login_required
+def produto_excluir(product_id):
+    admin_required()
+
+    product = Product.query.get_or_404(product_id)
+
+    try:
+        product_service.excluir_produto(product)
+        flash("Produto excluído com sucesso.", "success")
+
+    except IntegrityError:
+        db.session.rollback()
+        flash(
+            "Esse produto já tem pedidos no histórico e não pode ser excluído. "
+            "Desative o produto em vez de excluir.",
+            "error"
+        )
+
+    return redirect(url_for("admin.produtos_crud"))
+
+
+@admin_bp.route("/produtos/reajustar-precos", methods=["GET", "POST"])
+@login_required
+def produtos_reajustar_precos():
+    admin_required()
+
+    form = PriceUpdateForm()
+
+    produtos = Product.query.order_by(Product.name.asc()).all()
+    form.product_id.choices = [("", "Selecione um produto")] + [
+        (str(p.id), p.name) for p in produtos
+    ]
+
+    if form.validate_on_submit():
+
+        if form.scope.data == "single" and not form.product_id.data:
+            flash("Selecione um produto para aplicar o reajuste.", "warning")
+
+        else:
+            try:
+                qtd = product_service.reajustar_precos(
+                    scope=form.scope.data,
+                    modo=form.mode.data,
+                    valor=form.value.data,
+                    product_id=form.product_id.data or None,
+                )
+
+                flash(f"Reajuste aplicado em {qtd} produto(s).", "success")
+                return redirect(url_for("admin.produtos_crud"))
+
+            except ValueError as e:
+                flash(str(e), "error")
+
+    return render_template(
+        "admin/produtos_reajuste.html",
+        form=form
+    )
 
 @admin_bp.route("/pedidos/<int:id>")
 @login_required

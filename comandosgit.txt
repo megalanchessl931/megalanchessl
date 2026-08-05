@@ -3,7 +3,7 @@
 git add .
 
 
-git commit -m "Implementa no painel administrativo e gerenciamento de usuários. Adicionando telefone, e observações"
+git commit -m "Implementa no painel administrativo e gerenciamento de produtos. 1"
 
 
 git push origin main
