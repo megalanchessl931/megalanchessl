@@ -1,7 +1,6 @@
-# report_service.py
-
 from datetime import datetime, timedelta, timezone
 from decimal import Decimal
+from types import SimpleNamespace
 
 from sqlalchemy import func
 
@@ -27,7 +26,7 @@ def _limites_datetime(data_inicio, data_fim):
     Converte as datas (sem hora) do filtro em limites de datetime,
     cobrindo o dia inteiro de data_fim (00:00 até 23:59:59).
     """
-    inicio_dt = datetime combine = datetime.combine(data_inicio, datetime.min.time())
+    inicio_dt = datetime.combine(data_inicio, datetime.min.time())
     fim_dt = datetime.combine(data_fim, datetime.max.time())
     return inicio_dt, fim_dt
 
@@ -78,7 +77,7 @@ def vendas_por_periodo(data_inicio, data_fim):
 
     dia = func.date(Order.created_at)
 
-    linhas = db.session.query(
+    resultados = db.session.query(
         dia.label("dia"),
         func.sum(Order.total).label("total"),
         func.count(Order.id).label("qtd_pedidos"),
@@ -91,6 +90,21 @@ def vendas_por_periodo(data_inicio, data_fim):
     ).order_by(
         dia.asc()
     ).all()
+
+    # SQLite devolve o dia como string ("2026-08-06"); Postgres pode
+    # devolver como date. Normalizamos sempre para date de verdade,
+    # pra quem for exibir/exportar poder formatar como dd/mm/aaaa.
+    linhas = []
+    for r in resultados:
+        valor_dia = r.dia
+        if isinstance(valor_dia, str):
+            valor_dia = datetime.strptime(valor_dia, "%Y-%m-%d").date()
+
+        linhas.append(SimpleNamespace(
+            dia=valor_dia,
+            total=r.total,
+            qtd_pedidos=r.qtd_pedidos,
+        ))
 
     return linhas
 

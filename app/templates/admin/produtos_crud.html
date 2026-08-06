@@ -61,15 +61,7 @@ Produtos
                     </a>
 
                 </th>
-
-                <th width="90">
-
-                    <a href="{{ url_for('admin.produtos_crud', sort='order', dir='desc' if sort == 'order' and direction == 'asc' else 'asc') }}" class="sort-link">
-                        Ordem{% if sort == 'order' %} {{ '▲' if direction == 'asc' else '▼' }}{% endif %}
-                    </a>
-
-                </th>
-
+                
                 <th width="110">
 
                     <a href="{{ url_for('admin.produtos_crud', sort='is_active', dir='desc' if sort == 'is_active' and direction == 'asc' else 'asc') }}" class="sort-link">
@@ -78,7 +70,7 @@ Produtos
 
                 </th>
 
-                <th width="220">Ações</th>
+                <th width="260">Ações</th>
 
             </tr>
 
@@ -98,7 +90,7 @@ Produtos
                     <img
                         src="{{ url_for('static', filename='images/' + product.image_filename) }}"
                         alt="{{ product.name }}"
-                        width="48"
+                        width="40"
                     >
                 </td>
 
@@ -112,10 +104,6 @@ Produtos
 
                 <td>
                     R$ {{ "%.2f"|format(product.price|float) }}
-                </td>
-
-                <td>
-                    {{ product.order }}
                 </td>
 
                 <td>

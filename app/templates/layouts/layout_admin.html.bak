@@ -6,11 +6,9 @@
     <meta charset="UTF-8">
 
     <title>
-
         {% block title %}
         Painel Administrativo
         {% endblock %}
-
     </title>
 
     <meta
@@ -20,7 +18,7 @@
     <link
         rel="stylesheet"
         href="{{ url_for('static', filename='css/style.css') }}">
-    
+
     <link
         rel="stylesheet"
         href="{{ url_for('static', filename='css/admin.css') }}">
@@ -49,45 +47,44 @@
             </h2>
 
             <small>
-
                 Painel Administrativo
-
             </small>
 
         </div>
 
-        <div>
+        <div class="admin-user">
 
-			{% if current_user.is_authenticated %}
+            {% if current_user.is_authenticated %}
 
-				{{ current_user.username }}
+                {{ current_user.username }}
 
-				|
+                |
 
-				<form
-					action="{{ url_for('auth.logout') }}"
-					method="POST"
-					style="display:inline;">
+                <form
+                    action="{{ url_for('auth.logout') }}"
+                    method="POST"
+                    style="display:inline;">
 
-					{{ csrf_token() }}
+                    <input
+                        type="hidden"
+                        name="csrf_token"
+                        value="{{ csrf_token() }}">
 
-					<button
-						type="submit"
-						class="logout-link">
+                    <button
+                        type="submit"
+                        class="logout-link">
 
-						Sair
+                        Sair
 
-					</button>
+                    </button>
 
-				</form>
+                </form>
 
-			{% endif %}
+            {% endif %}
 
         </div>
 
     </header>
-
-
 
     <!-- ===================================================== -->
     <!-- ÁREA PRINCIPAL -->
@@ -134,13 +131,13 @@
                     </li>
 
                     <li>
-						
-						<a href="{{ url_for('admin.usuarios_lista') }}">
-							
-							Usuários
-							
-						</a>
-                        
+
+                        <a href="{{ url_for('admin.usuarios_lista') }}">
+
+                            Usuários
+
+                        </a>
+
                     </li>
 
                     <li>
@@ -175,7 +172,7 @@
 
                     <li>
 
-                        <a href="#">
+                        <a href="{{ url_for('admin.relatorios') }}">
 
                             Relatórios
 
@@ -199,15 +196,11 @@
 
         </aside>
 
-
-
         <!-- CONTEÚDO -->
 
         <main class="admin-content">
 
-            {% with messages =
-                get_flashed_messages(with_categories=true)
-            %}
+            {% with messages = get_flashed_messages(with_categories=true) %}
 
                 {% if messages %}
 
