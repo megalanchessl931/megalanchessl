@@ -764,3 +764,72 @@ textarea:focus{
     text-decoration:underline;
 
 }
+
+
+/* ==========================================================
+   REPORTS
+========================================================== */
+
+.reports-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+
+    gap:20px;
+
+    margin-top:20px;
+
+}
+
+.report-card{
+
+    display:block;
+
+    padding:25px;
+
+    border:1px solid #dcdcdc;
+
+    border-radius:10px;
+
+    background:#ffffff;
+
+    color:#333;
+
+    text-decoration:none;
+
+    transition:.2s;
+
+}
+
+.report-card:hover{
+
+    border-color:#1976d2;
+
+    box-shadow:0 3px 12px rgba(0,0,0,.10);
+
+    transform:translateY(-2px);
+
+}
+
+.report-icon{
+
+    font-size:42px;
+
+    margin-bottom:15px;
+
+}
+
+.report-card h2{
+
+    margin-bottom:10px;
+
+}
+
+.report-card p{
+
+    color:#666;
+
+    line-height:1.5;
+
+}

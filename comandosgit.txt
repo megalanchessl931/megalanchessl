@@ -3,7 +3,7 @@
 git add .
 
 
-git commit -m "Implementa no painel administrativo e gerenciamento de produtos. 2 e Início dos Relatórios"
+git commit -m "Desenvolvimento — Refatoração do Painel Administrativo e Módulo de Relatórios"
 
 
 git push origin main

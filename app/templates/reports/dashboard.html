@@ -19,129 +19,88 @@ Relatórios
 <div class="reports-grid">
 
     <a
-        href="{{ url_for('admin.relatorio_vendas') }}"
+        href="{{ url_for('reports.vendas') }}"
         class="report-card">
 
         <div class="report-icon">
-
             📈
-
         </div>
 
-        <h2>
-
-            Vendas
-
-        </h2>
+        <h2>Vendas</h2>
 
         <p>
-
             Faturamento, vendas por período,
             categorias e produtos mais vendidos.
-
         </p>
 
     </a>
 
     <a
-        href="{{ url_for('admin.relatorio_clientes') }}"
+        href="{{ url_for('reports.clientes') }}"
         class="report-card">
 
         <div class="report-icon">
-
             👥
-
         </div>
 
-        <h2>
-
-            Clientes
-
-        </h2>
+        <h2>Clientes</h2>
 
         <p>
-
             Clientes cadastrados,
             frequência de compra
             e ticket médio.
-
         </p>
 
     </a>
 
     <a
-        href="{{ url_for('admin.relatorio_produtos') }}"
+        href="{{ url_for('reports.produtos') }}"
         class="report-card">
 
         <div class="report-icon">
-
             📦
-
         </div>
 
-        <h2>
-
-            Produtos
-
-        </h2>
+        <h2>Produtos</h2>
 
         <p>
-
             Produtos mais vendidos,
-            menos vendidos
-            e desempenho.
-
+            desempenho e estatísticas.
         </p>
 
     </a>
 
     <a
-        href="{{ url_for('admin.relatorio_faturamento') }}"
+        href="{{ url_for('reports.faturamento') }}"
         class="report-card">
 
         <div class="report-icon">
-
             💰
-
         </div>
 
-        <h2>
-
-            Faturamento
-
-        </h2>
+        <h2>Faturamento</h2>
 
         <p>
-
             Resumo financeiro,
             evolução diária,
             mensal e anual.
-
         </p>
 
     </a>
 
     <a
-        href="{{ url_for('admin.relatorio_fornecedores') }}"
+        href="{{ url_for('reports.fornecedores') }}"
         class="report-card">
 
         <div class="report-icon">
-
             🚚
-
         </div>
 
-        <h2>
-
-            Fornecedores
-
-        </h2>
+        <h2>Fornecedores</h2>
 
         <p>
-
             Cadastro ainda
             não implementado.
-
         </p>
 
     </a>

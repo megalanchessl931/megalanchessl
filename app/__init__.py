@@ -61,12 +61,14 @@ def create_app(config_class=Config):
     from .routes.admin import admin_bp
     from .routes.auth import auth_bp
     from .routes.api import api_bp
+    from .routes.reports import reports_bp
 
     app.register_blueprint(public_bp)
     app.register_blueprint(orders_bp)
     app.register_blueprint(admin_bp)
     app.register_blueprint(auth_bp)
     app.register_blueprint(api_bp)
+    app.register_blueprint(reports_bp)
 
     from .utils.csv_importer import register_import_command
     register_import_command(app)

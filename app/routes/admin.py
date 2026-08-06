@@ -609,15 +609,16 @@ def imprimir_pedido(id):
 # ==========================================================
 
 def _resolver_periodo(form):
-    """
-    Lê data_inicio/data_fim do formulário de filtro. Se estiverem
-    vazios (primeira visita à página, sem filtro aplicado ainda),
-    usa o período padrão (mês atual).
-    """
+
+#    Lê data_inicio/data_fim do formulário de filtro. Se estiverem
+#    vazios (primeira visita à página, sem filtro aplicado ainda),
+#    usa o período padrão (mês atual).
+
     if form.data_inicio.data and form.data_fim.data:
         return form.data_inicio.data, form.data_fim.data
 
     return report_service.periodo_padrao()
+
 
 
 @admin_bp.route("/relatorios", methods=["GET"])
@@ -647,10 +648,11 @@ def relatorios():
 
 
 def _parse_data_export(nome_param):
-    """
-    Faz o parse de uma data vinda da querystring nas rotas de
-    exportação CSV (que não usam WTForms, pra manter o link simples).
-    """
+
+#    
+#    Faz o parse de uma data vinda da querystring nas rotas de
+#    exportação CSV (que não usam WTForms, pra manter o link simples).
+#    
     valor = request.args.get(nome_param)
 
     if not valor:
@@ -701,7 +703,7 @@ def exportar_vendas_periodo():
     linhas = report_service.vendas_por_periodo(data_inicio, data_fim)
 
     dados = [
-        [linha.dia, f"{linha.total:.2f}", linha.qtd_pedidos]
+        [linha.dia.strftime("%d/%m/%Y"), f"{linha.total:.2f}", linha.qtd_pedidos]
         for linha in linhas
     ]
 
