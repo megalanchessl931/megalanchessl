@@ -1,13 +1,104 @@
 {% extends "layouts/layout_admin.html" %}
 
 {% block title %}
-Relatório de Produtos
+Relatórios de Produtos
 {% endblock %}
 
 {% block content %}
 
-<h1>Relatório de Produtos</h1>
+<div class="card">
 
-<p>Em desenvolvimento.</p>
+    <h1>
+
+        Relatórios de Produtos
+
+    </h1>
+
+    <p class="page-subtitle">
+
+        Selecione o relatório que deseja consultar.
+
+    </p>
+
+</div>
+
+<div class="reports-grid">
+
+    <a
+        href="{{ url_for('reports.produtos_mais_vendidos') }}"
+        class="report-card">
+
+        <div class="report-icon">
+
+            📦
+
+        </div>
+
+        <h2>
+
+            Produtos Mais Vendidos
+
+        </h2>
+
+        <p>
+
+            Ranking dos produtos
+            mais vendidos.
+
+        </p>
+
+    </a>
+
+    <a
+        href="{{ url_for('reports.produtos_menos_vendidos') }}"
+        class="report-card">
+
+        <div class="report-icon">
+
+            📉
+
+        </div>
+
+        <h2>
+
+            Produtos Menos Vendidos
+
+        </h2>
+
+        <p>
+
+            Produtos com menor
+            volume de vendas.
+
+        </p>
+
+    </a>
+
+    <a
+        href="{{ url_for('reports.produtos_sem_venda') }}"
+        class="report-card">
+
+        <div class="report-icon">
+
+            🚫
+
+        </div>
+
+        <h2>
+
+            Produtos sem Venda
+
+        </h2>
+
+        <p>
+
+            Produtos que não
+            tiveram vendas.
+
+        </p>
+
+    </a>
+
+</div>
 
 {% endblock %}

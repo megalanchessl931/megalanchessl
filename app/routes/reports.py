@@ -23,8 +23,8 @@ from flask_login import (
 
 from ..forms.report_form import ReportFilterForm
 
-from ..services import report_service
 from ..services import pdf_service
+from ..services.report_vendas_service import ReportVendasService
 
 
 reports_bp = Blueprint(
@@ -32,6 +32,8 @@ reports_bp = Blueprint(
     __name__,
     url_prefix="/admin/relatorios"
 )
+
+report_vendas_service = ReportVendasService()
 
 
 # ==========================================================
@@ -65,7 +67,7 @@ def _resolver_periodo(form):
             form.data_fim.data
         )
 
-    return report_service.periodo_padrao()
+    return report_vendas_service.periodo_padrao()
 
 
 def _parse_data_export(nome_param):
@@ -103,7 +105,7 @@ def _periodo_export():
     if not data_inicio or not data_fim:
 
         data_inicio, data_fim = (
-            report_service.periodo_padrao()
+            report_vendas_service.periodo_padrao()
         )
 
     return (
@@ -217,7 +219,7 @@ def vendas():
 
     )
 
-    resumo = report_service.resumo(
+    resumo = report_vendas_service.resumo(
 
         data_inicio,
 
@@ -227,7 +229,7 @@ def vendas():
 
     vendas_periodo = (
 
-        report_service.vendas_por_periodo(
+        report_vendas_service.vendas_por_periodo(
 
             data_inicio,
 
@@ -239,7 +241,7 @@ def vendas():
 
     produtos_top = (
 
-        report_service.produtos_mais_vendidos(
+        report_vendas_service.produtos_mais_vendidos(
 
             data_inicio,
 
@@ -251,7 +253,7 @@ def vendas():
 
     vendas_categoria = (
 
-        report_service.vendas_por_categoria(
+        report_vendas_service.vendas_por_categoria(
 
             data_inicio,
 
@@ -293,7 +295,7 @@ def exportar_vendas_periodo():
 
     data_inicio, data_fim = _periodo_export()
 
-    linhas = report_service.vendas_por_periodo(
+    linhas = report_vendas_service.vendas_por_periodo(
         data_inicio,
         data_fim
     )
@@ -329,7 +331,7 @@ def exportar_produtos_top():
 
     data_inicio, data_fim = _periodo_export()
 
-    linhas = report_service.produtos_mais_vendidos(
+    linhas = report_vendas_service.produtos_mais_vendidos(
         data_inicio,
         data_fim
     )
@@ -371,7 +373,7 @@ def exportar_vendas_categoria():
 
     data_inicio, data_fim = _periodo_export()
 
-    linhas = report_service.vendas_por_categoria(
+    linhas = report_vendas_service.vendas_por_categoria(
         data_inicio,
         data_fim
     )
@@ -415,7 +417,7 @@ def visualizar_pdf_vendas_periodo():
 
     data_inicio, data_fim = _periodo_export()
 
-    linhas = report_service.vendas_por_periodo(
+    linhas = report_vendas_service.vendas_por_periodo(
         data_inicio,
         data_fim
     )
@@ -453,7 +455,7 @@ def visualizar_pdf_produtos_top():
 
     data_inicio, data_fim = _periodo_export()
 
-    linhas = report_service.produtos_mais_vendidos(
+    linhas = report_vendas_service.produtos_mais_vendidos(
         data_inicio,
         data_fim
     )
@@ -491,7 +493,7 @@ def visualizar_pdf_vendas_categoria():
 
     data_inicio, data_fim = _periodo_export()
 
-    linhas = report_service.vendas_por_categoria(
+    linhas = report_vendas_service.vendas_por_categoria(
         data_inicio,
         data_fim
     )
@@ -578,4 +580,238 @@ def fornecedores():
 
     return render_template(
         "reports/fornecedores.html"
+    )
+
+# ==========================================================
+# RELATÓRIOS VENDAS
+# ==========================================================
+
+@reports_bp.route(
+    "/vendas/periodo",
+    methods=["GET"]
+)
+@login_required
+def vendas_periodo():
+
+    admin_required()
+
+    form = ReportFilterForm(
+        request.args,
+        meta={"csrf": False}
+    )
+
+    data_inicio, data_fim = _resolver_periodo(form)
+
+    resumo = report_vendas_service.resumo(
+        data_inicio,
+        data_fim
+    )
+
+    vendas_periodo = report_vendas_service.vendas_por_periodo(
+        data_inicio,
+        data_fim
+    )
+
+    return render_template(
+        "reports/vendas_periodo.html",
+        form=form,
+        data_inicio=data_inicio,
+        data_fim=data_fim,
+        resumo=resumo,
+        vendas_periodo=vendas_periodo,
+    )
+
+
+@reports_bp.route(
+    "/vendas/produtos",
+    methods=["GET"]
+)
+@login_required
+def vendas_produtos():
+
+    admin_required()
+
+    form = ReportFilterForm(
+        request.args,
+        meta={"csrf": False}
+    )
+
+    data_inicio, data_fim = _resolver_periodo(form)
+
+    produtos_top = report_vendas_service.produtos_mais_vendidos(
+        data_inicio,
+        data_fim
+    )
+
+    return render_template(
+        "reports/vendas_produtos.html",
+        form=form,
+        data_inicio=data_inicio,
+        data_fim=data_fim,
+        produtos_top=produtos_top,
+    )
+
+
+@reports_bp.route(
+    "/vendas/categoria",
+    methods=["GET"]
+)
+@login_required
+def vendas_categoria():
+
+    admin_required()
+
+    form = ReportFilterForm(
+        request.args,
+        meta={"csrf": False}
+    )
+
+    data_inicio, data_fim = _resolver_periodo(form)
+
+    vendas_categoria = report_vendas_service.vendas_por_categoria(
+        data_inicio,
+        data_fim
+    )
+
+    return render_template(
+        "reports/vendas_categoria.html",
+        form=form,
+        data_inicio=data_inicio,
+        data_fim=data_fim,
+        vendas_categoria=vendas_categoria,
+    )
+
+# ==========================================================
+# RELATÓRIOS CLIENTES
+# ==========================================================
+
+@reports_bp.route("/clientes/cadastrados")
+@login_required
+def clientes_cadastrados():
+
+    admin_required()
+
+    return render_template(
+        "reports/clientes_cadastrados.html"
+    )
+
+
+@reports_bp.route("/clientes/frequentes")
+@login_required
+def clientes_frequentes():
+
+    admin_required()
+
+    return render_template(
+        "reports/clientes_frequentes.html"
+    )
+
+
+@reports_bp.route("/clientes/ticket")
+@login_required
+def clientes_ticket():
+
+    admin_required()
+
+    return render_template(
+        "reports/clientes_ticket.html"
+    )
+
+# ==========================================================
+# RELATÓRIOS PRODUTOS
+# ==========================================================
+
+@reports_bp.route("/produtos/mais-vendidos")
+@login_required
+def produtos_mais_vendidos():
+
+    admin_required()
+
+    return render_template(
+        "reports/produtos_mais_vendidos.html"
+    )
+
+
+@reports_bp.route("/produtos/menos-vendidos")
+@login_required
+def produtos_menos_vendidos():
+
+    admin_required()
+
+    return render_template(
+        "reports/produtos_menos_vendidos.html"
+    )
+
+
+@reports_bp.route("/produtos/sem-venda")
+@login_required
+def produtos_sem_venda():
+
+    admin_required()
+
+    return render_template(
+        "reports/produtos_sem_venda.html"
+    )
+
+
+# ==========================================================
+# RELATÓRIOS FATURAMENTO
+# ==========================================================
+
+@reports_bp.route("/faturamento/diario")
+@login_required
+def faturamento_diario():
+
+    admin_required()
+
+    return render_template(
+        "reports/faturamento_diario.html"
+    )
+
+
+@reports_bp.route("/faturamento/mensal")
+@login_required
+def faturamento_mensal():
+
+    admin_required()
+
+    return render_template(
+        "reports/faturamento_mensal.html"
+    )
+
+
+@reports_bp.route("/faturamento/anual")
+@login_required
+def faturamento_anual():
+
+    admin_required()
+
+    return render_template(
+        "reports/faturamento_anual.html"
+    )
+
+
+@reports_bp.route("/faturamento/pagamentos")
+@login_required
+def faturamento_pagamentos():
+
+    admin_required()
+
+    return render_template(
+        "reports/faturamento_pagamentos.html"
+    )
+
+
+# ==========================================================
+# RELATÓRIOS FORNECEDORES
+# ==========================================================
+
+@reports_bp.route("/fornecedores/compras")
+@login_required
+def fornecedores_compras():
+
+    admin_required()
+
+    return render_template(
+        "reports/fornecedores_compras.html"
     )

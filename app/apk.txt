@@ -1,0 +1,118 @@
+.
+├── apk.txt
+├── config_old.py
+├── config.py
+├── extensions.py
+├── forms
+│   ├── __init__.py
+│   ├── price_update_form.py
+│   ├── product_form.py
+│   ├── report_form.py
+│   ├── user_form.py
+│   └── user_form.py.bak
+├── __init__.py
+├── models
+│   ├── client.py
+│   ├── __init__.py
+│   ├── order_item.py
+│   ├── order.py
+│   ├── product.py
+│   ├── user.py
+├── routes
+│   ├── admin.py
+│   ├── api.py
+│   ├── auth.py
+│   ├── excesso.py
+│   ├── __init__.py
+│   ├── orders.py
+│   ├── public.py
+│   ├── reports.py
+│   └── users.py
+├── services
+│   ├── cart_service.py
+│   ├── __init__.py
+│   ├── order_service.py
+│   ├── pdf_service.py
+│   ├── printer_service.py
+│   ├── product_service.py
+│   ├── report_service.py
+│   ├── user_service.py
+├── static
+│   ├── css
+│   │   ├── admin.css
+│   │   └── style.css
+│   ├── fonts
+│   │   └── ahkio.ttf
+│   ├── images
+│   │   ├── b718b649976a4cc589454b95dd215fe8.jpg
+│   │   ├── dog2.jpg
+│   │   ├── dogduplo.jpeg
+│   │   ├── download.jpeg
+│   │   ├── e9d794f53336495a808c4d351b321a86.jpg
+│   │   ├── fruki2.jpeg
+│   │   ├── frukipqn.jpeg
+│   │   ├── fundo.jpg
+│   │   ├── logo1.jpg
+│   │   ├── logo3.jpg
+│   │   ├── logocomfundoetexto.jpg
+│   │   ├── logo.jpg
+│   │   ├── logotexto.jpg
+│   │   ├── placeholder.jpg
+│   │   ├── referencia.jpg
+│   │   ├── refri.jpg
+│   │   ├── violinha.jpg
+│   │   ├── xbacon.jpg
+│   │   ├── xcostela.jpg
+│   │   ├── xentrevero.jpg
+│   │   └── xtudo.jpg
+│   └── js
+│       ├── cart_basico.js
+│       ├── cart.js
+│       └── script.js
+├── templates
+│   ├── admin
+│   │   ├── dashboard.html
+│   │   ├── pedido_detalhe.html
+│   │   ├── pedidos_lista.html
+│   │   ├── produto_form.html
+│   │   ├── produtos_crud.html
+│   │   ├── produtos_reajuste.html
+│   │   ├── relatorios.html
+│   │   ├── relatorios.html.bak
+│   │   ├── usuario_editar.html
+│   │   ├── usuario_form.html
+│   │   ├── usuario_form.html.bak
+│   │   ├── usuario_senha.html
+│   │   ├── usuarios_lista.bak.html
+│   │   ├── usuarios_lista.html
+│   │   └── usuarios_lista.html.bak
+│   ├── atendente
+│   ├── auth
+│   │   ├── login.html
+│   │   └── registro.html
+│   ├── base.html
+│   ├── layouts
+│   │   ├── layout_admin.html
+│   │   ├── layout_atendente.html
+│   │   ├── layout_publico.html
+│   │   └── layout_reports.html
+│   ├── orders
+│   │   ├── pedido_balcao.html
+│   │   ├── pedido_publico.html
+│   │   └── _pedido_widget.html
+│   ├── public
+│   │   ├── contato.html
+│   │   ├── index.html
+│   │   └── menu.html
+│   └── reports
+│       ├── clientes.html
+│       ├── dashboard.html
+│       ├── faturamento.html
+│       ├── fornecedores.html
+│       ├── produtos.html
+│       ├── vendas.html
+│       └── vendas.html.bak
+└── utils
+    ├── csv_importer.py
+    ├── __init__.py
+    └── security.py

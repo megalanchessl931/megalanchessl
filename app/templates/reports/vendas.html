@@ -1,270 +1,107 @@
 {% extends "layouts/layout_admin.html" %}
 
 {% block title %}
-Relatórios
+Relatórios de Vendas
 {% endblock %}
 
 {% block content %}
 
 <div class="card">
 
-    <h1>Relatórios</h1>
+    <h1>
+
+        Relatórios de Vendas
+
+    </h1>
 
     <p class="page-subtitle">
-        Período: {{ data_inicio.strftime('%d/%m/%Y') }} até {{ data_fim.strftime('%d/%m/%Y') }}
+
+        Selecione o relatório que deseja consultar.
+
     </p>
 
-    <form method="GET" class="filtro-relatorio">
-
-        <div class="form-group">
-
-            {{ form.data_inicio.label }}
-
-            {{ form.data_inicio(class="form-control", value=data_inicio.strftime('%Y-%m-%d')) }}
-
-        </div>
-
-        <div class="form-group">
-
-            {{ form.data_fim.label }}
-
-            {{ form.data_fim(class="form-control", value=data_fim.strftime('%Y-%m-%d')) }}
-
-        </div>
-
-        <div class="form-group filtro-relatorio-botao">
-
-            {{ form.submit(class="btn btn-primary") }}
-
-        </div>
-
-    </form>
-
 </div>
 
-<div class="card">
+<div class="reports-grid">
 
-    <div class="resumo-grid">
+    <a
+        href="{{ url_for('reports.vendas_periodo') }}"
+        class="report-card">
 
-        <div class="resumo-item">
+        <div class="report-icon">
 
-            <span class="resumo-label">Faturamento</span>
-
-            <span class="resumo-valor">R$ {{ "%.2f"|format(resumo.total_faturado|float) }}</span>
+            📅
 
         </div>
 
-        <div class="resumo-item">
+        <h2>
 
-            <span class="resumo-label">Pedidos</span>
+            Vendas por Período
 
-            <span class="resumo-valor">{{ resumo.qtd_pedidos }}</span>
+        </h2>
+
+        <p>
+
+            Visualiza o faturamento,
+            quantidade de pedidos
+            e evolução das vendas
+            dentro do período informado.
+
+        </p>
+
+    </a>
+
+    <a
+        href="{{ url_for('reports.vendas_produtos') }}"
+        class="report-card">
+
+        <div class="report-icon">
+
+            📦
 
         </div>
 
-        <div class="resumo-item">
+        <h2>
 
-            <span class="resumo-label">Ticket Médio</span>
+            Produtos Mais Vendidos
 
-            <span class="resumo-valor">R$ {{ "%.2f"|format(resumo.ticket_medio|float) }}</span>
+        </h2>
+
+        <p>
+
+            Exibe o ranking dos
+            produtos mais vendidos,
+            quantidade e faturamento.
+
+        </p>
+
+    </a>
+
+    <a
+        href="{{ url_for('reports.vendas_categoria') }}"
+        class="report-card">
+
+        <div class="report-icon">
+
+            🏷️
 
         </div>
 
-        <div class="resumo-item">
+        <h2>
 
-            <span class="resumo-label">Cancelados</span>
+            Vendas por Categoria
 
-            <span class="resumo-valor">{{ resumo.qtd_cancelados }}</span>
+        </h2>
 
-        </div>
+        <p>
 
-    </div>
+            Demonstra o desempenho
+            das categorias de produtos
+            no período selecionado.
 
-</div>
+        </p>
 
-<div class="card">
-
-    <div class="card-title">
-        Vendas por Período
-    </div>
-
-    <a
-        href="{{ url_for('reports.visualizar_pdf_vendas_periodo', data_inicio=data_inicio.strftime('%Y-%m-%d'), data_fim=data_fim.strftime('%Y-%m-%d')) }}"
-        class="btn btn-secondary"
-        target="_blank"
-    >
-        Visualizar PDF
     </a>
-
-    <a
-        href="{{ url_for('reports.exportar_vendas_periodo', data_inicio=data_inicio.strftime('%Y-%m-%d'), data_fim=data_fim.strftime('%Y-%m-%d')) }}"
-        class="btn btn-secondary"
-    >
-        Exportar CSV
-    </a>
-
-    <table>
-
-        <thead>
-
-            <tr>
-                <th>Data</th>
-                <th>Pedidos</th>
-                <th>Total Faturado</th>
-            </tr>
-
-        </thead>
-
-        <tbody>
-
-        {% for linha in vendas_periodo %}
-
-            <tr>
-
-                <td>{{ linha.dia.strftime('%d/%m/%Y') }}</td>
-
-                <td>{{ linha.qtd_pedidos }}</td>
-
-                <td>R$ {{ "%.2f"|format(linha.total|float) }}</td>
-
-            </tr>
-
-        {% else %}
-
-            <tr>
-                <td colspan="3">Nenhuma venda no período.</td>
-            </tr>
-
-        {% endfor %}
-
-        </tbody>
-
-    </table>
-
-</div>
-
-<div class="card">
-
-    <div class="card-title">
-        Produtos Mais Vendidos
-    </div>
-
-    <a
-        href="{{ url_for('reports.visualizar_pdf_produtos_top', data_inicio=data_inicio.strftime('%Y-%m-%d'), data_fim=data_fim.strftime('%Y-%m-%d')) }}"
-        class="btn btn-secondary"
-        target="_blank"
-    >
-        Visualizar PDF
-    </a>
-
-    <a
-        href="{{ url_for('reports.exportar_produtos_top', data_inicio=data_inicio.strftime('%Y-%m-%d'), data_fim=data_fim.strftime('%Y-%m-%d')) }}"
-        class="btn btn-secondary"
-    >
-        Exportar CSV
-    </a>
-
-    <table>
-
-        <thead>
-
-            <tr>
-                <th>Produto</th>
-                <th>Categoria</th>
-                <th>Quantidade</th>
-                <th>Total Faturado</th>
-            </tr>
-
-        </thead>
-
-        <tbody>
-
-        {% for linha in produtos_top %}
-
-            <tr>
-
-                <td>{{ linha.nome }}</td>
-
-                <td>{{ linha.categoria }}</td>
-
-                <td>{{ linha.quantidade }}</td>
-
-                <td>R$ {{ "%.2f"|format(linha.total|float) }}</td>
-
-            </tr>
-
-        {% else %}
-
-            <tr>
-                <td colspan="4">Nenhum produto vendido no período.</td>
-            </tr>
-
-        {% endfor %}
-
-        </tbody>
-
-    </table>
-
-</div>
-
-<div class="card">
-
-    <div class="card-title">
-        Vendas por Categoria
-    </div>
-
-    <a
-        href="{{ url_for('reports.visualizar_pdf_vendas_categoria', data_inicio=data_inicio.strftime('%Y-%m-%d'), data_fim=data_fim.strftime('%Y-%m-%d')) }}"
-        class="btn btn-secondary"
-        target="_blank"
-    >
-        Visualizar PDF
-    </a>
-
-    <a
-        href="{{ url_for('reports.exportar_vendas_categoria', data_inicio=data_inicio.strftime('%Y-%m-%d'), data_fim=data_fim.strftime('%Y-%m-%d')) }}"
-        class="btn btn-secondary"
-    >
-        Exportar CSV
-    </a>
-
-    <table>
-
-        <thead>
-
-            <tr>
-                <th>Categoria</th>
-                <th>Quantidade</th>
-                <th>Total Faturado</th>
-            </tr>
-
-        </thead>
-
-        <tbody>
-
-        {% for linha in vendas_categoria %}
-
-            <tr>
-
-                <td>{{ linha.categoria }}</td>
-
-                <td>{{ linha.quantidade }}</td>
-
-                <td>R$ {{ "%.2f"|format(linha.total|float) }}</td>
-
-            </tr>
-
-        {% else %}
-
-            <tr>
-                <td colspan="3">Nenhuma venda no período.</td>
-            </tr>
-
-        {% endfor %}
-
-        </tbody>
-
-    </table>
 
 </div>
 

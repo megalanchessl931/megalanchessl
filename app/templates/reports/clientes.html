@@ -1,13 +1,107 @@
 {% extends "layouts/layout_admin.html" %}
 
 {% block title %}
-Relatório de Clientes
+Relatórios de Clientes
 {% endblock %}
 
 {% block content %}
 
-<h1>Relatório de Clientes</h1>
+<div class="card">
 
-<p>Em desenvolvimento.</p>
+    <h1>
+
+        Relatórios de Clientes
+
+    </h1>
+
+    <p class="page-subtitle">
+
+        Selecione o relatório que deseja consultar.
+
+    </p>
+
+</div>
+
+<div class="reports-grid">
+
+    <a
+        href="{{ url_for('reports.clientes_cadastrados') }}"
+        class="report-card">
+
+        <div class="report-icon">
+
+            👥
+
+        </div>
+
+        <h2>
+
+            Clientes Cadastrados
+
+        </h2>
+
+        <p>
+
+            Relação completa dos
+            clientes cadastrados
+            no sistema.
+
+        </p>
+
+    </a>
+
+    <a
+        href="{{ url_for('reports.clientes_frequentes') }}"
+        class="report-card">
+
+        <div class="report-icon">
+
+            ⭐
+
+        </div>
+
+        <h2>
+
+            Clientes Frequentes
+
+        </h2>
+
+        <p>
+
+            Exibe os clientes
+            que mais realizaram
+            pedidos no período.
+
+        </p>
+
+    </a>
+
+    <a
+        href="{{ url_for('reports.clientes_ticket') }}"
+        class="report-card">
+
+        <div class="report-icon">
+
+            💳
+
+        </div>
+
+        <h2>
+
+            Ticket Médio
+
+        </h2>
+
+        <p>
+
+            Demonstra o ticket
+            médio dos clientes
+            no período informado.
+
+        </p>
+
+    </a>
+
+</div>
 
 {% endblock %}

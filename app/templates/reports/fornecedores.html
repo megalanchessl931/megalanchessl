@@ -1,13 +1,54 @@
 {% extends "layouts/layout_admin.html" %}
 
 {% block title %}
-Relatório de Fornecedores
+Relatórios de Fornecedores
 {% endblock %}
 
 {% block content %}
 
-<h1>Relatório de Fornecedores</h1>
+<div class="card">
 
-<p>Cadastro de fornecedores ainda não implementado.</p>
+    <h1>
+
+        Relatórios de Fornecedores
+
+    </h1>
+
+    <p class="page-subtitle">
+
+        Selecione o relatório que deseja consultar.
+
+    </p>
+
+</div>
+
+<div class="reports-grid">
+
+    <a
+        href="{{ url_for('reports.fornecedores_compras') }}"
+        class="report-card">
+
+        <div class="report-icon">
+
+            🚚
+
+        </div>
+
+        <h2>
+
+            Compras por Fornecedor
+
+        </h2>
+
+        <p>
+
+            Relatório de compras
+            agrupadas por fornecedor.
+
+        </p>
+
+    </a>
+
+</div>
 
 {% endblock %}

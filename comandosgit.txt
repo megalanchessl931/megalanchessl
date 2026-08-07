@@ -3,7 +3,7 @@
 git add .
 
 
-git commit -m "Desenvolvimento — Refatoração do Painel Administrativo e Módulo de Relatórios"
+git commit -m "Desenvolvimento — Refatoração do Painel Administrativo e Módulo de Relatórios de Vendas"
 
 
 git push origin main

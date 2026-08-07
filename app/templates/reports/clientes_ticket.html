@@ -1,0 +1,37 @@
+{% extends "layouts/layout_admin.html" %}
+
+{% block title %}
+Ticket Médio por Cliente
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <div class="page-header">
+
+        <h1>
+
+            Ticket Médio por Cliente
+
+        </h1>
+
+        <a
+            href="{{ url_for('reports.clientes') }}"
+            class="btn btn-secondary">
+
+            ← Voltar
+
+        </a>
+
+    </div>
+
+    <p class="page-subtitle">
+
+        Ticket médio dos clientes no período selecionado.
+
+    </p>
+
+</div>
+
+{% endblock %}

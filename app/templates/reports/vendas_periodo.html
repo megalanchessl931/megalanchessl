@@ -1,0 +1,208 @@
+{% extends "layouts/layout_admin.html" %}
+
+{% block title %}
+Vendas por Período
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <div class="page-header">
+
+        <div>
+
+            <h1>
+
+                Vendas por Período
+
+            </h1>
+
+            <p class="page-subtitle">
+
+                Relatório de vendas realizadas no período selecionado.
+
+            </p>
+
+        </div>
+
+        <a
+            href="{{ url_for('reports.vendas') }}"
+            class="btn btn-secondary">
+
+            ← Voltar
+
+        </a>
+
+    </div>
+
+</div>
+
+{% include "components/filtro_periodo.html" %}
+
+<div class="card">
+
+    <div class="resumo-grid">
+
+        <div class="resumo-item">
+
+            <span class="resumo-label">
+
+                Faturamento
+
+            </span>
+
+            <span class="resumo-valor">
+
+                R$ {{ "%.2f"|format(resumo.total_faturado|float) }}
+
+            </span>
+
+        </div>
+
+        <div class="resumo-item">
+
+            <span class="resumo-label">
+
+                Pedidos
+
+            </span>
+
+            <span class="resumo-valor">
+
+                {{ resumo.qtd_pedidos }}
+
+            </span>
+
+        </div>
+
+        <div class="resumo-item">
+
+            <span class="resumo-label">
+
+                Ticket Médio
+
+            </span>
+
+            <span class="resumo-valor">
+
+                R$ {{ "%.2f"|format(resumo.ticket_medio|float) }}
+
+            </span>
+
+        </div>
+
+        <div class="resumo-item">
+
+            <span class="resumo-label">
+
+                Cancelados
+
+            </span>
+
+            <span class="resumo-valor">
+
+                {{ resumo.qtd_cancelados }}
+
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card">
+
+    <div class="card-title">
+
+        Vendas por Período
+
+    </div>
+
+    <a
+        href="{{ url_for(
+            'reports.visualizar_pdf_vendas_periodo',
+            data_inicio=data_inicio.strftime('%Y-%m-%d'),
+            data_fim=data_fim.strftime('%Y-%m-%d')
+        ) }}"
+        class="btn btn-secondary"
+        target="_blank">
+
+        Visualizar PDF
+
+    </a>
+
+    <a
+        href="{{ url_for(
+            'reports.exportar_vendas_periodo',
+            data_inicio=data_inicio.strftime('%Y-%m-%d'),
+            data_fim=data_fim.strftime('%Y-%m-%d')
+        ) }}"
+        class="btn btn-secondary">
+
+        Exportar CSV
+
+    </a>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Data</th>
+                <th>Pedidos</th>
+                <th>Total Faturado</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for linha in vendas_periodo %}
+
+            <tr>
+
+                <td>
+
+                    {{ linha.dia.strftime('%d/%m/%Y') }}
+
+                </td>
+
+                <td>
+
+                    {{ linha.qtd_pedidos }}
+
+                </td>
+
+                <td>
+
+                    R$ {{ "%.2f"|format(linha.total|float) }}
+
+                </td>
+
+            </tr>
+
+        {% else %}
+
+            <tr>
+
+                <td colspan="3">
+
+                    Nenhuma venda encontrada no período.
+
+                </td>
+
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

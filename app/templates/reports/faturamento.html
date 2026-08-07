@@ -1,13 +1,129 @@
 {% extends "layouts/layout_admin.html" %}
 
 {% block title %}
-Relatório de Faturamento
+Relatórios de Faturamento
 {% endblock %}
 
 {% block content %}
 
-<h1>Relatório de Faturamento</h1>
+<div class="card">
 
-<p>Em desenvolvimento.</p>
+    <h1>
+
+        Relatórios de Faturamento
+
+    </h1>
+
+    <p class="page-subtitle">
+
+        Selecione o relatório que deseja consultar.
+
+    </p>
+
+</div>
+
+<div class="reports-grid">
+
+    <a
+        href="{{ url_for('reports.faturamento_diario') }}"
+        class="report-card">
+
+        <div class="report-icon">
+
+            📅
+
+        </div>
+
+        <h2>
+
+            Faturamento Diário
+
+        </h2>
+
+        <p>
+
+            Evolução diária
+            do faturamento.
+
+        </p>
+
+    </a>
+
+    <a
+        href="{{ url_for('reports.faturamento_mensal') }}"
+        class="report-card">
+
+        <div class="report-icon">
+
+            📆
+
+        </div>
+
+        <h2>
+
+            Faturamento Mensal
+
+        </h2>
+
+        <p>
+
+            Evolução mensal
+            do faturamento.
+
+        </p>
+
+    </a>
+
+    <a
+        href="{{ url_for('reports.faturamento_anual') }}"
+        class="report-card">
+
+        <div class="report-icon">
+
+            📈
+
+        </div>
+
+        <h2>
+
+            Faturamento Anual
+
+        </h2>
+
+        <p>
+
+            Evolução anual
+            do faturamento.
+
+        </p>
+
+    </a>
+
+    <a
+        href="{{ url_for('reports.faturamento_pagamentos') }}"
+        class="report-card">
+
+        <div class="report-icon">
+
+            💳
+
+        </div>
+
+        <h2>
+
+            Formas de Pagamento
+
+        </h2>
+
+        <p>
+
+            Distribuição do
+            faturamento por pagamento.
+
+        </p>
+
+    </a>
+
+</div>
 
 {% endblock %}

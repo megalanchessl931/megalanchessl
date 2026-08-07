@@ -1,0 +1,124 @@
+{% extends "layouts/layout_admin.html" %}
+
+{% block title %}
+Vendas por Categoria
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <div class="page-header">
+
+        <h1>
+
+            Vendas por Categoria
+
+        </h1>
+
+        <a
+            href="{{ url_for('reports.vendas') }}"
+            class="btn btn-secondary">
+
+            ← Voltar
+
+        </a>
+
+    </div>
+
+    <p class="page-subtitle">
+
+        Relatório de vendas agrupadas por categoria.
+
+    </p>
+
+</div>
+
+{% include "components/filtro_periodo.html" %}
+
+<div class="card">
+
+    <div class="card-title">
+
+        Vendas por Categoria
+
+    </div>
+
+    <a
+        href="{{ url_for(
+            'reports.visualizar_pdf_vendas_categoria',
+            data_inicio=data_inicio.strftime('%Y-%m-%d'),
+            data_fim=data_fim.strftime('%Y-%m-%d')
+        ) }}"
+        class="btn btn-secondary"
+        target="_blank">
+
+        Visualizar PDF
+
+    </a>
+
+    <a
+        href="{{ url_for(
+            'reports.exportar_vendas_categoria',
+            data_inicio=data_inicio.strftime('%Y-%m-%d'),
+            data_fim=data_fim.strftime('%Y-%m-%d')
+        ) }}"
+        class="btn btn-secondary">
+
+        Exportar CSV
+
+    </a>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Categoria</th>
+                <th>Quantidade</th>
+                <th>Total Faturado</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for linha in vendas_categoria %}
+
+            <tr>
+
+                <td>{{ linha.categoria }}</td>
+
+                <td>{{ linha.quantidade }}</td>
+
+                <td>
+
+                    R$ {{ "%.2f"|format(linha.total|float) }}
+
+                </td>
+
+            </tr>
+
+        {% else %}
+
+            <tr>
+
+                <td colspan="3">
+
+                    Nenhuma venda encontrada no período.
+
+                </td>
+
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}
